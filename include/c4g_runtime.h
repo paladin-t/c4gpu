@@ -382,6 +382,13 @@ C4G_RUNTIME_API void c4grt_prepare_out(struct C4GRT_Runtime* rt, C4GRT_PassId pa
  */
 C4G_RUNTIME_API void c4grt_compute(struct C4GRT_Runtime* rt, C4GRT_PassId head /* = 0 */);
 /**
+ * @brief Maps and fills output buffer data.
+ *
+ * @param[in] rt - A C4GPU runtime instance.
+ * @param[in] pass - The pass ID to be mapped.
+ */
+C4G_RUNTIME_API void c4grt_map_out(struct C4GRT_Runtime* rt, C4GRT_PassId pass);
+/**
  * @brief Finishes computation, and deletes GPU buffers associated with some specified pass(es).
  *
  * @param[in] rt - A C4GPU runtime instance.
