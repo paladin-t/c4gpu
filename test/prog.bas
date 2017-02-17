@@ -39,7 +39,7 @@ prepare_uniform(rt, p0, un)
 prepare_in(rt, p0, inp)
 prepare_out(rt, p0, out)
 
-' Computes
+' Computes.
 print "Begin compute...";
 t = ticks()
 compute(rt, p0)

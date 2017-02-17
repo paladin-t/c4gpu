@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Threading.Tasks;
 
 #region Vector lib.
 
@@ -647,14 +648,28 @@ public class Program
 
     public static void Main()
     {
-        Stopwatch sw = new Stopwatch();
-        sw.Start();
-
+        // Prepares.
+        Console.Out.WriteLine("Preparing...");
         Vector4 un0 = new Vector4(100, 100, 100, 100);
         Vector4[] in0 = new Vector4[1000000];
         for (int i = 0; i < in0.Length; ++i)
+        {
             in0[i] = new Vector4(1, 2, 3, 4);
+        }
         Vector4[] out0 = new Vector4[in0.Length];
+
+        // Computes.
+        Console.Out.WriteLine("Begin compute...");
+        Stopwatch sw = new Stopwatch();
+        sw.Start();
+
+        /*
+        Parallel.For
+        (
+            0, in0.Length,
+            i => out0[i] = Eval(un0, in0[i])
+        );
+        */
         for (int i = 0; i < in0.Length; ++i)
         {
             out0[i] = Eval(un0, in0[i]);
@@ -662,6 +677,9 @@ public class Program
 
         sw.Stop();
         Console.Out.WriteLine(string.Format("{0}ms cost.", sw.ElapsedMilliseconds));
+
+        // Done.
+        Console.Out.WriteLine("Done.");
 
         Console.In.Read();
     }
