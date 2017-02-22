@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="c4g_runtime.cpp" />
+    <ClCompile Include="c4g_glsl.cpp">
+      <Filter>opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="c4g_utils.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+    <ClCompile Include="c4g_context_win.cpp">
+      <Filter>opengl\platform\win</Filter>
+    </ClCompile>
+    <ClCompile Include="c4g_gl.cpp">
+      <Filter>opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="c4g_glpass.cpp">
+      <Filter>opengl</Filter>
+    </ClCompile>
+    <ClCompile Include="c4g_glemitter.cpp">
+      <Filter>opengl</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="c4g_runtime.h" />
+    <ClInclude Include="c4g_glsl.hpp">
+      <Filter>opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="c4g_utils.hpp">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="c4g_context_win.hpp">
+      <Filter>opengl\platform\win</Filter>
+    </ClInclude>
+    <ClInclude Include="c4g_gl.hpp">
+      <Filter>opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="c4g_glpass.hpp">
+      <Filter>opengl</Filter>
+    </ClInclude>
+    <ClInclude Include="c4g_glemitter.hpp">
+      <Filter>opengl</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="opengl">
+      <UniqueIdentifier>{420ad8c2-dd6e-41b1-b43f-0b9fb221586d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{49fa85f3-a50b-4d75-aa95-6a2a35790765}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="opengl\platform">
+      <UniqueIdentifier>{137be5d0-5b0c-4b02-a418-e936a17fbbb5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="opengl\platform\win">
+      <UniqueIdentifier>{c2a7cedf-e610-4d9d-987e-db69a71ac1c2}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
