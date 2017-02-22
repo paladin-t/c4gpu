@@ -40,7 +40,7 @@ Run the `test/c_eval.exe` to profile with native C. The source code file is `tes
 
 运行 `test/c_eval.exe` 进行本地 C 测试。其源码在 `test/c_eval/c_eval.c`。
 
-### 3. C#
+### 3. C Sharp
 
 Run the `test/cs_eval.exe` to profile with C#.
 
