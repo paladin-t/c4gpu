@@ -24,11 +24,11 @@ There are various profiling programs in the `test` directory.
 
 Run the `test/c4grt_eval.exe` to profile with C4GRT. I used on of my other project [MY-BASIC](https://github.com/paladin-t/my_basic) for a scripting driven purpose.
 
-运行 `test/c4grt_eval.exe` 进行 C4GRT 测试。我使用了我的另一个项目 [MY-BASIC](https://github.com/paladin-t/my_basic) 作为脚本驱动。
-
 * It accepts a `.bas` file as optional argument, uses `prog.bas` as default;
 * A `.bas` operates the C4GRT system, and evaluates using a vertex shader with prepared data;
 * It's possible to modify the `.bas` and `.vert` vertex shader files to profile.
+
+运行 `test/c4grt_eval.exe` 进行 C4GRT 测试。我使用了我的另一个项目 [MY-BASIC](https://github.com/paladin-t/my_basic) 作为脚本驱动。
 
 * 它接受一个 `.bas` 文件作为可选参数，缺省使用 `prog.bas`；
 * `.bas` 脚本操作 C4GRT 系统，并使用一个 vertex shader 来对准备好的数据求值；
@@ -44,11 +44,11 @@ Run the `test/c_eval.exe` to profile with native C. The source code file is `tes
 
 Run the `test/cs_eval.exe` to profile with C#.
 
-运行 `test/cs_eval.exe` 进行 C# 测试。
-
 * It accepts a `.cs` file as optional argument, uses `prog.cs` as default;
 * It compiles and invokes the `.cs` source code on the fly;
 * It's possible to midify the `.cs` file to profile.
+
+运行 `test/cs_eval.exe` 进行 C# 测试。
 
 * 它接受一个 `.cs` 文件作为可选参数，缺省使用 `prog.cs`；
 * 它会动态编译执行 `.cs` 源代码；
@@ -64,11 +64,11 @@ TODO : ADD RESULT AND CHART
 
 It's able to pass following data types.
 
-可传递以下类型的数据。
-
 * Basic data types;
 * Texture data;
 * Customized struct.
+
+可传递以下类型的数据。
 
 * 基础数据类型；
 * 纹理数据；
@@ -78,13 +78,13 @@ It's able to pass following data types.
 
 Shader computation
 
-Shader 计算
-
 1. Creates context, binds shader
 2. Input data
 3. Computes shadering
 4. Output data
 5. Clears context
+
+Shader 计算
 
 1. 创建上下文，绑定 Shader
 2. 输入数据
