@@ -1,3 +1,11 @@
+REM The C4GPU (C for GPU) System.
+REM
+REM For the latest info, see https://github.com/c4gpu/c4gpu/
+REM
+REM Copyright (C) 2017 Wang Renxin. All rights reserved.
+REM
+REM This is a MY-BASIC powered script.
+
 import "@c4g"
 
 ' Config.

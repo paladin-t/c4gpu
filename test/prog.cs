@@ -1,3 +1,13 @@
+/*
+** The C4GPU (C for GPU) System.
+**
+** For the latest info, see https://github.com/c4gpu/c4gpu/
+**
+** Copyright (C) 2017 Wang Renxin. All rights reserved.
+**
+** The C# eval test.
+*/
+
 using System;
 using System.Diagnostics;
 using System.Threading.Tasks;

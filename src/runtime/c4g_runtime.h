@@ -4,9 +4,6 @@
 ** For the latest info, see https://github.com/c4gpu/c4gpu/
 **
 ** Copyright (C) 2017 Wang Renxin. All rights reserved.
-**
-** Read the "Runtime" part in the LICENSE.md file to get details about
-** licensing information.
 */
 
 #ifndef __C4G_RUNTIME_H__

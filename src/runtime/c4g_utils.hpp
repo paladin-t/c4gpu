@@ -1,3 +1,11 @@
+/*
+** The C4GPU (C for GPU) System.
+**
+** For the latest info, see https://github.com/c4gpu/c4gpu/
+**
+** Copyright (C) 2017 Wang Renxin. All rights reserved.
+*/
+
 #ifndef __C4G_UTILS_H__
 #define __C4G_UTILS_H__
 
