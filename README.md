@@ -71,7 +71,7 @@ Run the `test/cs_eval.exe` to profile with C#.
 I've tested the profiler programs on a desktop computer as follow.
 
 	Indel Core i5-6500 CPU, 3.2GHz
-	DDR4 2.4GHz RAM, 8 GB
+	DDR4 2.4GHz RAM, 8GB
 	NVIDIA GeForce GTX950 GPU, 2GB
 
 They result approximately as follow.
@@ -87,7 +87,7 @@ No doubt the performance of the GPGPU solution stands out remarkably.
 本人在一台台式机上运行效率测试程序，配置如下。
 
 	Indel Core i5-6500 CPU, 3.2GHz
-	DDR4 2.4GHz RAM, 8 GB
+	DDR4 2.4GHz RAM, 8GB
 	NVIDIA GeForce GTX950 GPU, 2GB
 
 大致运行结果如下。
