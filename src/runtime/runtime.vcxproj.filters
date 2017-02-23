@@ -17,9 +17,6 @@
     <ClCompile Include="c4g_glpass.cpp">
       <Filter>opengl</Filter>
     </ClCompile>
-    <ClCompile Include="c4g_glemitter.cpp">
-      <Filter>opengl</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="c4g_runtime.h" />
@@ -36,9 +33,6 @@
       <Filter>opengl</Filter>
     </ClInclude>
     <ClInclude Include="c4g_glpass.hpp">
-      <Filter>opengl</Filter>
-    </ClInclude>
-    <ClInclude Include="c4g_glemitter.hpp">
       <Filter>opengl</Filter>
     </ClInclude>
     <ClInclude Include="..\external\rapidjson\include\rapidjson\allocators.h">

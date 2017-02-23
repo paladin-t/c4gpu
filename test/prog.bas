@@ -65,9 +65,6 @@ if write_to_file then
     file.open(fp, "c4grt_eval.log", "w")
     file.write_line(fp, "Output 0:")
     file.write(fp, out0)
-    file.write_line(fp)
-    file.write_line(fp, "Output 1:")
-    file.write(fp, out1)
     file.close(fp)
 endif
 print "Done.";

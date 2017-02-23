@@ -23,7 +23,6 @@
     <ClCompile Include="c4g_glpass.cpp" />
     <ClCompile Include="c4g_glsl.cpp" />
     <ClCompile Include="c4g_gl.cpp" />
-    <ClCompile Include="c4g_glemitter.cpp" />
     <ClCompile Include="c4g_runtime.cpp" />
     <ClCompile Include="c4g_utils.cpp" />
   </ItemGroup>
@@ -67,7 +66,6 @@
     <ClInclude Include="c4g_glpass.hpp" />
     <ClInclude Include="c4g_glsl.hpp" />
     <ClInclude Include="c4g_gl.hpp" />
-    <ClInclude Include="c4g_glemitter.hpp" />
     <ClInclude Include="c4g_runtime.h" />
     <ClInclude Include="c4g_utils.hpp" />
   </ItemGroup>
