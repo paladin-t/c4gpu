@@ -93,10 +93,6 @@ extern "C" {
 #	define C4G_RUNTIME_INLINE inline
 #endif /* C4G_RUNTIME_INLINE */
 
-#ifndef C4GRT_WITHOUT_EMITTER
-#	define C4GRT_WITHOUT_EMITTER
-#endif /* C4GRT_WITHOUT_EMITTER */
-
 /**
  * @brief C4GPU boolean.
  */
@@ -294,23 +290,6 @@ C4G_RUNTIME_API void c4grt_set_pass_flow(struct C4GRT_Runtime* rt, C4GRT_PassId 
  * @param[in] ps - Count of the elements in the array `pars`.
  */
 C4G_RUNTIME_API void c4grt_set_pass_pipe(struct C4GRT_Runtime* rt, C4GRT_PassId pass, C4GRT_Bool pipe, const char* const * const pars, size_t ps);
-
-#ifndef C4GRT_WITHOUT_EMITTER
-/**
- * @brief Uses a Pcode file for computation.
- *
- * @param[in] rt - A C4GPU runtime instance.
- * @param[in] f - A Pcode file path.
- */
-C4G_RUNTIME_API void c4grt_use_pcode_file(struct C4GRT_Runtime* rt, const char* const f);
-/**
- * @brief Uses a Pcode text for computation.
- *
- * @param[in] rt - A C4GPU runtime instance.
- * @param[in] c - A Pcode text.
- */
-C4G_RUNTIME_API void c4grt_use_pcode_string(struct C4GRT_Runtime* rt, const char* const c);
-#endif /* !C4GRT_WITHOUT_EMITTER */
 
 /**
  * @brief Uses a GPU program file for computation.

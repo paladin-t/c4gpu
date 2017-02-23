@@ -319,22 +319,18 @@ bool Pass::prepareIn(BufferList &bd, const PipeNameDict &pipes) {
 	glBindVertexArray(_vao);
 
 	_computeProg.use();
-	size_t i = 0;
-	GLint j = 0;
-	for (auto it = bd.begin(); it != bd.end(); ++it) {
-		Buffer &b = *it;
+	for (Buffer &b : bd) {
+		if (!b.name())
+			continue;
+		auto pit = pipes.find(b.name());
+		if (pit == pipes.end())
+			continue;
+
+		GLint k = _computeProg.attributeLocation(pit->second.c_str());
+		if (k == GL_INVALID_INDEX)
+			continue;
 
 		glBindBuffer(GL_ARRAY_BUFFER, b.id());
-
-		GLint k = j;
-		if (b.name()) {
-			auto pit = pipes.find(b.name());
-			if (pit != pipes.end())
-				k = _computeProg.attributeLocation(pit->second.c_str());
-			else
-				k = _computeProg.attributeLocation(b.name());
-			if (k == GL_INVALID_INDEX) k = j;
-		}
 
 		glEnableVertexAttribArray(k);
 		glVertexAttribPointer(

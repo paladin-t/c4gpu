@@ -6,9 +6,17 @@
 
 ## Introduction; 简介
 
+### 1. Gist; 主旨
+
 This project is the runtime part of the C4GPU system, which evaluates with massive data efficiently on GPU. Let's use C4GRT for short. It implements GPGPU with [Transform Feedback](https://www.khronos.org/opengl/wiki/Transform_Feedback) and programming with [GLSL](https://en.wikipedia.org/wiki/GLSL).
 
 此项目是 C4GPU 系统的运行时部分，其作用为在 GPU 上对大量数据做高效运算。下文用 C4GRT 代指。利用 [Transform Feedback](https://www.khronos.org/opengl/wiki/Transform_Feedback) 和 [GLSL](https://en.wikipedia.org/wiki/GLSL) 实现 GPGPU。
+
+### 2. Why GLSL for GPGPU; 为何使用 GLSL 做 GPGPU
+
+There are some other GPGPU techniques available. But GLSL is almost the sole option if you'd like to write cross platform GPU program, and legally, although it's designed as graphics shader.
+
+作 GPGPU 的技术有很多。但是如果你想写跨平台，且合法的 GPU 程序，GLSL 差不多是唯一的选择了。
 
 ## Compatibility; 兼容性
 
@@ -22,7 +30,7 @@ There are various profiling programs in the `test` directory.
 
 ### 1. C4GRT
 
-Run the `test/c4grt_eval.exe` to profile with C4GRT. I used on of my other project [MY-BASIC](https://github.com/paladin-t/my_basic) for a scripting driven purpose.
+Run the `test/c4grt_eval.exe` to profile with C4GRT. I used one of my other project [MY-BASIC](https://github.com/paladin-t/my_basic) for a scripting driven purpose.
 
 * It accepts a `.bas` file as optional argument, uses `prog.bas` as default;
 * A `.bas` operates the C4GRT system, and evaluates using a vertex shader with prepared data;
@@ -94,6 +102,10 @@ Shader 计算
 
 ## How to use it as a lib; 如何使用库文件
 
+The C4GRT is implemented with C++11, and has exposed an ANSI C interface.
+
+C4GRT 使用 C++11 实现，并且其接口为 ANSI C 导出。
+
 TODO : WRITE ME
 
 ## Code at a glance; 示例
@@ -103,3 +115,7 @@ Read the `test/test/bas` and `test/test.vert` for a quick tutorial.
 阅读 `test/test/bas` 以及 `test/test.vert` 作为快速入门。
 
 TODO : WRITE MORE
+
+## limitations; 限制
+
+TODO : WRITE ME

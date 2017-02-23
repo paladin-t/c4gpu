@@ -16,7 +16,7 @@
 
 #ifndef C4G_COUNTOF
 #	define C4G_COUNTOF(__a) (sizeof(__a) / sizeof(*(__a)))
-#endif /* C4G_COUNTOF */
+#endif /* !C4G_COUNTOF */
 
 /*
 struct Compiler final {
@@ -80,11 +80,6 @@ struct Runtime final {
 	decltype(&c4grt_set_pass_flow) setPassFlow = nullptr;
 	decltype(&c4grt_set_pass_pipe) setPassPipe = nullptr;
 
-#ifndef C4GRT_WITHOUT_EMITTER
-	decltype(&c4grt_use_pcode_file) usePcodeFile = nullptr;
-	decltype(&c4grt_use_pcode_string) usePcodeString = nullptr;
-#endif /* !C4GRT_WITHOUT_EMITTER */
-
 	decltype(&c4grt_use_gpu_program_file) useGpuProgramFile = nullptr;
 	decltype(&c4grt_use_gpu_program_string) useGpuProgramString = nullptr;
 
@@ -119,10 +114,6 @@ struct Runtime final {
 		addPass = (decltype(addPass))GetProcAddress(_hDll, "c4grt_add_pass");
 		setPassFlow = (decltype(setPassFlow))GetProcAddress(_hDll, "c4grt_set_pass_flow");
 		setPassPipe = (decltype(setPassPipe))GetProcAddress(_hDll, "c4grt_set_pass_pipe");
-#ifndef C4GRT_WITHOUT_EMITTER
-		usePcodeFile = (decltype(usePcodeFile))GetProcAddress(_hDll, "c4grt_use_pcode_file");
-		usePcodeString = (decltype(usePcodeString))GetProcAddress(_hDll, "c4grt_use_pcode_string");
-#endif /* !C4GRT_WITHOUT_EMITTER */
 		useGpuProgramFile = (decltype(useGpuProgramFile))GetProcAddress(_hDll, "c4grt_use_gpu_program_file");
 		useGpuProgramString = (decltype(useGpuProgramString))GetProcAddress(_hDll, "c4grt_use_gpu_program_string");
 		prepareBuffers = (decltype(prepareBuffers))GetProcAddress(_hDll, "c4grt_prepare_buffers");
@@ -143,10 +134,6 @@ struct Runtime final {
 			!!addPass ||
 			!!setPassFlow ||
 			!!setPassPipe ||
-#ifndef C4GRT_WITHOUT_EMITTER
-			!!usePcodeFile ||
-			!!usePcodeString ||
-#endif /* !C4GRT_WITHOUT_EMITTER */
 			!!useGpuProgramFile ||
 			!!useGpuProgramString ||
 			!!prepareBuffers ||

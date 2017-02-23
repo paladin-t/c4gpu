@@ -88,16 +88,6 @@ void c4grt_set_pass_pipe(struct C4GRT_Runtime* rt, C4GRT_PassId pass, C4GRT_Bool
 	}
 }
 
-#ifndef C4GRT_WITHOUT_EMITTER
-void c4grt_use_pcode_file(struct C4GRT_Runtime* rt, const char* const f) {
-	// TODO
-}
-
-void c4grt_use_pcode_string(struct C4GRT_Runtime* rt, const char* const c) {
-	// TODO
-}
-#endif /* !C4GRT_WITHOUT_EMITTER */
-
 void c4grt_use_gpu_program_file(struct C4GRT_Runtime* rt, C4GRT_PassId pass, const char* const f, const char* const varyings[], size_t vs) {
 	if (!rt) return;
 	if (!f) return;
