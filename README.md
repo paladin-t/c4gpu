@@ -192,8 +192,8 @@ It's also possible to link several evaluation passes into an evaluation sequence
 	p1 = rt.add_pass(p0) ' 添加第二个 pass，且使用 p0 作为其前置 pass。
 	rt.set_pass_pipe(p0, true, "o0", "v0", "o1", "v1") ' 设置如何将 p0 输出传递给 p1 作为输入。
 
-## limitations; 限制
+## Limitations; 限制
 
-It requires OpenGL 2.0 or OpenGL ES 3.0 to use the Transform Feedback.
+It requires OpenGL 2.0 or OpenGL ES 3.0 to use the Transform Feedback. Some GPUs didn't implement texture sampler in vertex shader.
 
-使用 Transform Feedback 特性要求 OpenGL 2.0 或 OpenGL ES 3.0 及以上版本。
+使用 Transform Feedback 特性要求 OpenGL 2.0 或 OpenGL ES 3.0 及以上版本。某些 GPU 不允许在 vertes shader 里使用纹理采样。
