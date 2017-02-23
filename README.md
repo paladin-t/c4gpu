@@ -68,10 +68,10 @@ Run the `test/cs_eval.exe` to profile with C#.
 
 ### 4. Comparisons; 对比
 
-I've tested the profiler programs on a desktop computer with:
+I've tested the profiler programs on a desktop computer as follow.
 
-	Indel Core i5-6500 CPU, 3.20GHz
-	DDR4 2.4GHz RAM, 8.00 GB
+	Indel Core i5-6500 CPU, 3.2GHz
+	DDR4 2.4GHz RAM, 8 GB
 	NVIDIA GeForce GTX950 GPU, 2GB
 
 They result approximately as follow.
@@ -82,12 +82,12 @@ C4GRT | prog.bas/prog.vert | 230ms
 C | - | 2.5min
 C# | prog.cs | 4.8min
 
-No doubt performance of the GPGPU solution stands out remarkably.
+No doubt the performance of the GPGPU solution stands out remarkably.
 
-本人在一台台式机上运行效率测试程序，配置如下：
+本人在一台台式机上运行效率测试程序，配置如下。
 
-	Indel Core i5-6500 CPU, 3.20GHz
-	DDR4 2.4GHz RAM, 8.00 GB
+	Indel Core i5-6500 CPU, 3.2GHz
+	DDR4 2.4GHz RAM, 8 GB
 	NVIDIA GeForce GTX950 GPU, 2GB
 
 大致运行结果如下。
@@ -106,7 +106,7 @@ C# | prog.cs | 4.8min
 
 #### 1.1 Data types; 数据类型
 
-It's able to pass following data types.
+It's able to pass the following data types.
 
 * Basic data types;
 * Texture data;
@@ -122,23 +122,23 @@ It's able to pass following data types.
 
 Shader computation.
 
-1. Creates context, binds shader
-2. Input data
-3. Computes shadering
-4. Output data
-5. Clears context
+1. Creates context, binds shader;
+2. Inputs data;
+3. Computes shadering;
+4. Outputs data;
+5. Clears context.
 
 Shader 计算。
 
-1. 创建上下文，绑定 Shader
-2. 输入数据
-3. 计算着色
-4. 输出数据
-5. 清理上下文
+1. 创建上下文，绑定 Shader；
+2. 输入数据；
+3. 计算着色；
+4. 输出数据；
+5. 清理上下文。
 
 ## How to use it as a lib; 如何使用库文件
 
-The C4GRT is implemented with C++11, and has exposed an ANSI C interface. You can see `src/runtime` for the implementation source code. But for most cases, you may include the `include/c4g_runtime.h` header file to use the library.
+The C4GRT is implemented with C++11, and has exposed an ANSI C interface. You can see `src/runtime` for the implementation source code. But for most cases, you may only include the `include/c4g_runtime.h` header file to use the library.
 
 C4GRT 使用 C++11 实现，并且其接口为 ANSI C 导出。如需查看实现源码，请看 `src/runtime` 文件夹。但对于大多数使用情景来说，包含 `include/c4g_runtime.h` 头文件就足够了。
 
@@ -146,7 +146,7 @@ C4GRT 使用 C++11 实现，并且其接口为 ANSI C 导出。如需查看实�
 
 Read the `test/test.bas` and `test/test.vert` for a quick tutorial. You could also read the `src/shell/c4g.cpp` to see how to use it with C/C++ programs.
 
-A common workflow as follow.
+A common workflow works as follow.
 
 	rt = runtime() ' Creates a C4GRT instance.
 	p0 = rt.add_pass() ' Adds an evaluation pass.
