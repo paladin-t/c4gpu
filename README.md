@@ -10,39 +10,41 @@
 
 ### 1. Gist
 
-Welcome to the C4GPU Runtime. Let's call it C4GRT for short. C4GRT evaluates with massive data efficiently on GPU. It implements a GPGPU method with [Transform Feedback](https://www.khronos.org/opengl/wiki/Transform_Feedback) and programming with [GLSL](https://en.wikipedia.org/wiki/GLSL). With this library, you don't need to care about how to manipulate GPU API. The only thing you need to do is use the C API, and write standard GLSL shader for evaluation.
+Welcome to the C4GPU Runtime. The C4GPU Runtime accelerated computing library is a free, general purpose, open source library that simplifies the process of developing software that targets parallel and massively parallel computing benefits by hardware acceleration with GPU. Let's call it C4GRT for short. It implements a GPGPU method with [Transform Feedback](https://www.khronos.org/opengl/wiki/Transform_Feedback) and programming with [GLSL](https://en.wikipedia.org/wiki/GLSL). With this library, you don't need to care about how to manipulate GPU API. The only thing you need to do is use the C API, and write standard GLSL shader for evaluation.
 
 ### 2. Why GLSL for GPGPU
 
 There are some other GPGPU techniques available. But GLSL is almost the sole option if you'd like to write legal cross platform GPU program, although it's designed as a graphics shadering language.
 
+C4GRT is an abstraction layer of GPGPU with OpenGL.
+
 ## Compatibility
 
-This repository only contains libraries and test programs for Windows for the moment. It requires VC++ 2015 runtime to run the programs, please use `redist/vc_redist.x64.exe` to install it.
+This repository only contains libraries and test programs for Windows for the moment. It requires VC++ 2015 runtime to run the programs, please use `[redist/vc_redist.x64.exe](redist/vc_redist.x64.exe)` to install it.
 
 TODO : ADD BIN FOR MORE OS
 
 ## Performance
 
-There are various profiling programs in the `test` directory.
+There are various profiling programs in the `[test](test)` directory.
 
 ### 1. C4GRT
 
 Run the `test/c4grt_eval.exe` to profile with C4GRT. I used one of my other project [MY-BASIC](https://github.com/paladin-t/my_basic) for a scripting driven purpose.
 
-* It accepts a `.bas` file as optional argument, uses `prog.bas` as default;
+* It accepts a `.bas` file as optional argument, uses `[prog.bas](test/prog.bas)` as default;
 * A `.bas` operates the C4GRT system, and evaluates using a vertex shader with prepared data;
 * It's possible to modify the `.bas` and `.vert` vertex shader files to profile.
 
 ### 2. C
 
-Run the `test/c_eval.exe` to profile with native C. The source code file is `test/c_eval/c_eval.c`.
+Run the `test/c_eval.exe` to profile with native C. The source code file is `[test/c_eval/c_eval.c](test/c_eval/c_eval.c)`.
 
 ### 3. C Sharp
 
 Run the `test/cs_eval.exe` to profile with C#.
 
-* It accepts a `.cs` file as optional argument, uses `prog.cs` as default;
+* It accepts a `.cs` file as optional argument, uses `[prog.cs](test/prog.cs)` as default;
 * It compiles and invokes the `.cs` source code on the fly;
 * It's possible to midify the `.cs` file to profile.
 
@@ -58,9 +60,9 @@ They result approximately as follow.
 
 Host | Program | Time cost
 ----- | ----- | -----
-C4GRT | prog.bas/prog.vert | 230ms
+C4GRT | [prog.bas](test/prog.bas)/[prog.vert](test/prog.vert) | 230ms
 C | - | 2.5min
-C# | prog.cs | 4.8min
+C# | [prog.cs](test/prog.cs) | 4.8min
 
 Without doubt the performance of the GPGPU solution stands out remarkably.
 
@@ -88,11 +90,11 @@ Shader computation.
 
 ## How to use it as a lib
 
-The C4GRT is implemented with C++11, and has exposed an ANSI C interface. You can see `src/runtime` for the implementation source code. But for most cases, you may only include the `include/c4g_runtime.h` header file to use the library.
+The C4GRT is implemented with C++11, and has exposed an ANSI C interface. You can see `[src/runtime](src/runtime)` for the implementation source code. But for most cases, you may only include the `[include/c4g_runtime.h](include/c4g_runtime.h)` header file to use the library.
 
 ## Code at a glance
 
-Read the `test/test.bas` and `test/test.vert` for a quick tutorial. You could also read the `src/shell/c4g.cpp` to see how to use it with C/C++ programs.
+Read the `[test/test.bas](test/test.bas)` and `[test/test.vert](test/test.vert)` for a quick tutorial. You could also read the `[src/shell/c4g.cpp](src/shell/c4g.cpp)` to see how to use it with C/C++ programs.
 
 A common workflow works as follow.
 
@@ -130,39 +132,41 @@ It requires OpenGL 2.0 or OpenGL ES 3.0 to use the Transform Feedback. Some GPUs
 
 ### 1. 主旨
 
-欢迎来到 C4GPU Runtime。下文均用 C4GRT 代指本项目。C4GRT 的作用是在 GPU 上对大量数据做高效运算。其利用 [Transform Feedback](https://www.khronos.org/opengl/wiki/Transform_Feedback) 和 [GLSL](https://en.wikipedia.org/wiki/GLSL) 实现了 GPGPU 的一种方法。使用本库你不需要关心如何操作 GPU API。你唯一需要关注的就是调用 C API，以及编写标准 GLSL 着色程序用以计算。
+欢迎来到 C4GPU Runtime。C4GPU Runtime 计算加速库是一个免费、通用、开源的程序库，得益于 GPU 硬件加速，用以简化面向并行及大规模并行计算的软件开发过程。下文均用 C4GRT 代指本项目。其利用 [Transform Feedback](https://www.khronos.org/opengl/wiki/Transform_Feedback) 和 [GLSL](https://en.wikipedia.org/wiki/GLSL) 实现了 GPGPU 的一种方法。使用本库你不需要关心如何操作 GPU API。你唯一需要关注的就是调用 C API，以及编写标准 GLSL 着色程序用以计算。
 
 ### 2. 为何使用 GLSL 做 GPGPU
 
 能用来做 GPGPU 的技术有很多。但是如果你想写合法的跨平台 GPU 程序，GLSL 差不多是唯一的选择了，尽管其设计初衷是作为图形着色语言。
 
+C4GRT 是针对 GPGPU 的 OpenGL 调用的一层抽象。
+
 ## 兼容性
 
-本 repo 暂时只提供针对 Windows 平台的库文件和测试程序。程序运行需要 VC++ 2015 运行时支持，请使用 `redist/vc_redist.x64.exe` 进行安装。
+本源码仓库暂时只提供针对 Windows 平台的库文件和测试程序。程序运行需要 VC++ 2015 运行时支持，请使用 `[redist/vc_redist.x64.exe](redist/vc_redist.x64.exe)` 进行安装。
 
 TODO : ADD BIN FOR MORE OS
 
 ## 性能
 
-在 `test` 文件夹下有多个性能测试程序。
+在 `[test](test)` 文件夹下有多个性能测试程序。
 
 ### 1. C4GRT
 
 运行 `test/c4grt_eval.exe` 进行 C4GRT 测试。我使用了我的另一个项目 [MY-BASIC](https://github.com/paladin-t/my_basic) 作为脚本驱动。
 
-* 程序接受一个 `.bas` 文件作为可选参数，缺省使用 `prog.bas`；
+* 程序接受一个 `.bas` 文件作为可选参数，缺省使用 `[prog.bas](test/prog.bas)`；
 * `.bas` 脚本操作 C4GRT 系统，并使用一个 vertex shader 来对准备好的数据求值；
 * 可对 `.bas` 和 `.vert` vertex shader 文件做测试修改。
 
 ### 2. C
 
-运行 `test/c_eval.exe` 进行本地 C 测试。其源码在 `test/c_eval/c_eval.c`。
+运行 `test/c_eval.exe` 进行本地 C 测试。其源码在 `[test/c_eval/c_eval.c](test/c_eval/c_eval.c)`。
 
 ### 3. C Sharp
 
 运行 `test/cs_eval.exe` 进行 C# 测试。
 
-* 程序接受一个 `.cs` 文件作为可选参数，缺省使用 `prog.cs`；
+* 程序接受一个 `.cs` 文件作为可选参数，缺省使用 `[prog.cs](test/prog.cs)`；
 * 程序会动态编译执行 `.cs` 源代码；
 * 可对 `.cs` 文件做测试修改。
 
@@ -178,9 +182,9 @@ TODO : ADD BIN FOR MORE OS
 
 宿主 | 程序 | 耗时
 ----- | ----- | -----
-C4GRT | prog.bas/prog.vert | 230ms
+C4GRT | [prog.bas](test/prog.bas)/[prog.vert](test/prog.vert) | 230ms
 C | - | 2.5min
-C# | prog.cs | 4.8min
+C# | [prog.cs](test/prog.cs) | 4.8min
 
 毫无疑问 GPGPU 解决方案的效率明显胜出。
 
@@ -208,11 +212,11 @@ Shader 计算。
 
 ## 如何使用库文件
 
-C4GRT 使用 C++11 实现，并且其接口为 ANSI C 导出。如需查看实现源码，请看 `src/runtime` 文件夹。但对于大多数使用情景来说，包含 `include/c4g_runtime.h` 头文件就足够了。
+C4GRT 使用 C++11 实现，并且其接口为 ANSI C 导出。如需查看实现源码，请看 `[src/runtime](src/runtime)` 文件夹。但对于大多数使用情景来说，包含 `[include/c4g_runtime.h](include/c4g_runtime.h)` 头文件就足够了。
 
 ## 示例
 
-阅读 `test/test.bas` 以及 `test/test.vert` 作为快速入门。你也可以查看 `src/shell/c4g.cpp` 以了解如何在 C/C++ 程序中使用它。
+阅读 `[test/test.bas](test/test.bas)` 以及 `[test/test.vert](test/test.vert)` 作为快速入门。你也可以查看 `[src/shell/c4g.cpp](src/shell/c4g.cpp)` 以了解如何在 C/C++ 程序中使用它。
 
 一个典型工作流程如下。
 
