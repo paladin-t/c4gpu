@@ -1,7 +1,7 @@
 /*
-** The C4GPU (C for GPU) System.
+** C4GPU.
 **
-** For the latest info, see https://github.com/c4gpu/c4gpu/
+** For the latest info, see https://github.com/c4gpu/c4gpu_runtime/
 **
 ** Copyright (C) 2017 Wang Renxin. All rights reserved.
 **

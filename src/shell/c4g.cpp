@@ -1,69 +1,20 @@
 /*
-** The C4GPU (C for GPU) System.
+** C4GPU.
 **
-** For the latest info, see https://github.com/c4gpu/c4gpu/
+** For the latest info, see https://github.com/c4gpu/c4gpu_runtime/
 **
 ** Copyright (C) 2017 Wang Renxin. All rights reserved.
 */
 
-//#include "c4g_compiler.h"
 #include "c4g_runtime.h"
 #include <stdio.h>
 #include <Windows.h>
 
-//#define COMPILER_LIB_NAME L"c4gcp.dll"
 #define RUNTIME_LIB_NAME L"c4grt.dll"
 
 #ifndef C4G_COUNTOF
 #	define C4G_COUNTOF(__a) (sizeof(__a) / sizeof(*(__a)))
 #endif /* !C4G_COUNTOF */
-
-/*
-struct Compiler final {
-	HINSTANCE _hDll = nullptr;
-
-	decltype(&c4gcp_open) open = nullptr;
-	decltype(&c4gcp_close) close = nullptr;
-
-	Compiler::Compiler() {
-	}
-	Compiler::~Compiler() {
-	}
-
-	bool load(void) {
-		_hDll = LoadLibrary(COMPILER_LIB_NAME);
-
-		if (!_hDll) {
-			wprintf(L"Cannot find library %s.\n", COMPILER_LIB_NAME);
-
-			return false;
-		}
-
-		open = (decltype(open))GetProcAddress(_hDll, "c4gcp_open");
-		close = (decltype(close))GetProcAddress(_hDll, "c4gcp_close");
-
-		bool ret = (
-			!!open ||
-			!!close
-		);
-		if (!ret) {
-			wprintf(L"Incomplete library %s.\n", COMPILER_LIB_NAME);
-
-			return false;
-		}
-
-		return true;
-	}
-	bool unload(void) {
-		if (!_hDll)
-			return false;
-
-		FreeLibrary(_hDll);
-
-		return true;
-	}
-};
-*/
 
 struct Runtime final {
 	HINSTANCE _hDll = nullptr;

@@ -1,6 +1,6 @@
-REM The C4GPU (C for GPU) System.
+REM C4GPU.
 REM
-REM For the latest info, see https://github.com/c4gpu/c4gpu/
+REM For the latest info, see https://github.com/c4gpu/c4gpu_runtime/
 REM
 REM Copyright (C) 2017 Wang Renxin. All rights reserved.
 REM
