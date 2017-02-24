@@ -34,9 +34,9 @@ C4G_RUNTIME_IMPL static GLenum type(C4GRT_DataTypes t) {
 		return GL_BYTE;
 	case DT_USERTYPE:
 		return GL_BYTE;
+	default:
+		return GL_NONE;
 	}
-
-	return GL_NONE;
 }
 
 C4G_RUNTIME_IMPL static GLsizei size(C4GRT_DataTypes t) {
@@ -61,9 +61,9 @@ C4G_RUNTIME_IMPL static GLsizei size(C4GRT_DataTypes t) {
 		return sizeof(GLbyte);
 	case DT_USERTYPE:
 		return sizeof(GLbyte);
+	default:
+		return 0;
 	}
-
-	return 0;
 }
 
 Pass::Pass(OpenGL* owner, C4GRT_PassId id) : _owner(owner), _id(id) {
@@ -197,17 +197,20 @@ bool Pass::prepareTex(const C4GRT_Tex* const pd, size_t ds) {
 		case DT_VEC3B: type = GL_UNSIGNED_BYTE; fc = 3; fmt = GL_RGB; break;
 		case DT_VEC4B: type = GL_UNSIGNED_BYTE; fc = 4; fmt = GL_RGBA; break;
 		case DT_USERTYPE: type = GL_UNSIGNED_BYTE; break;
+		default: break;
 		}
 
 		glActiveTexture((GLenum)(GL_TEXTURE0 + i + 1 + _texSlotBegin));
 		switch (d._sizeCount) {
 		case 1:
+#if !defined C4G_RUNTIME_OS_IOS && !defined C4G_RUNTIME_OS_IOS_SIM
 			b.map(*pcd);
 			glBindTexture(GL_TEXTURE_1D, b.id());
 			glTexImage1D(GL_TEXTURE_1D, 0, fc, (GLsizei)d._sizes[0], 0, fmt, type, b.ptr());
 			glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 			glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
+#endif
+				
 			break;
 		case 2:
 			b.map(*pcd);

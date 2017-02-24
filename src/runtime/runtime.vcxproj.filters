@@ -35,110 +35,11 @@
     <ClInclude Include="c4g_glpass.hpp">
       <Filter>opengl</Filter>
     </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\allocators.h">
-      <Filter>external\rapidjson</Filter>
+    <ClInclude Include="c4g_context_macos.h">
+      <Filter>opengl\platform\macos</Filter>
     </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\document.h">
-      <Filter>external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\encodedstream.h">
-      <Filter>external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\encodings.h">
-      <Filter>external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\filereadstream.h">
-      <Filter>external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\filewritestream.h">
-      <Filter>external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\fwd.h">
-      <Filter>external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\istreamwrapper.h">
-      <Filter>external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\memorybuffer.h">
-      <Filter>external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\memorystream.h">
-      <Filter>external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\ostreamwrapper.h">
-      <Filter>external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\pointer.h">
-      <Filter>external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\prettywriter.h">
-      <Filter>external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\rapidjson.h">
-      <Filter>external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\reader.h">
-      <Filter>external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\schema.h">
-      <Filter>external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\stream.h">
-      <Filter>external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\stringbuffer.h">
-      <Filter>external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\writer.h">
-      <Filter>external\rapidjson</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\error\en.h">
-      <Filter>external\rapidjson\error</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\error\error.h">
-      <Filter>external\rapidjson\error</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\internal\biginteger.h">
-      <Filter>external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\internal\diyfp.h">
-      <Filter>external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\internal\dtoa.h">
-      <Filter>external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\internal\ieee754.h">
-      <Filter>external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\internal\itoa.h">
-      <Filter>external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\internal\meta.h">
-      <Filter>external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\internal\pow10.h">
-      <Filter>external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\internal\regex.h">
-      <Filter>external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\internal\stack.h">
-      <Filter>external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\internal\strfunc.h">
-      <Filter>external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\internal\strtod.h">
-      <Filter>external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\internal\swap.h">
-      <Filter>external\rapidjson\internal</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\msinttypes\inttypes.h">
-      <Filter>external\rapidjson\msinttypes</Filter>
-    </ClInclude>
-    <ClInclude Include="..\external\rapidjson\include\rapidjson\msinttypes\stdint.h">
-      <Filter>external\rapidjson\msinttypes</Filter>
+    <ClInclude Include="c4g_context_ios.h">
+      <Filter>opengl\platform\ios</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -154,20 +55,19 @@
     <Filter Include="opengl\platform\win">
       <UniqueIdentifier>{c2a7cedf-e610-4d9d-987e-db69a71ac1c2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="external">
-      <UniqueIdentifier>{af7af75c-c8c3-4734-935c-fedacb0b9b84}</UniqueIdentifier>
+    <Filter Include="opengl\platform\macos">
+      <UniqueIdentifier>{0f075d62-50be-4bfb-ad6e-1ddb1ea8c0ba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="external\rapidjson">
-      <UniqueIdentifier>{8483a4d8-d33e-4824-a3a4-a6d86f548e80}</UniqueIdentifier>
+    <Filter Include="opengl\platform\ios">
+      <UniqueIdentifier>{57084d96-03ef-4542-a4b3-cafac16c5db1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="external\rapidjson\error">
-      <UniqueIdentifier>{30017b36-6750-446a-adef-6e80735f875c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\rapidjson\internal">
-      <UniqueIdentifier>{012b0660-a0cf-49cc-9a67-0b41426a77b0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="external\rapidjson\msinttypes">
-      <UniqueIdentifier>{7a03a3d9-1859-4ffb-b414-0a4e2c833b07}</UniqueIdentifier>
-    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="c4g_context_macos.mm">
+      <Filter>opengl\platform\macos</Filter>
+    </None>
+    <None Include="c4g_context_ios.mm">
+      <Filter>opengl\platform\ios</Filter>
+    </None>
   </ItemGroup>
 </Project>

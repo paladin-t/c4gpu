@@ -10,9 +10,24 @@
 #define __C4G_GLSL_H__
 
 #include "c4g_runtime.h"
-#include <GL/glew.h>
-#include <GL/glut.h>
+#ifdef C4G_RUNTIME_OS_WIN
+#	include <GL/glew.h>
+#	include <GL/glut.h>
+#elif defined C4G_RUNTIME_OS_APPLE
+#	if (defined C4G_RUNTIME_OS_IOS || defined C4G_RUNTIME_OS_IOS_SIM)
+#		include <OpenGLES/ES3/gl.h>
+#		include <OpenGLES/ES2/glext.h>
+#	else
+#		include <OpenGL/gl3.h>
+#		include <OpenGL/gl3ext.h>
+#		include <GLUT/glut.h>
+#	endif
+#endif /* C4G_RUNTIME_OS_WIN */
 #include <vector>
+
+#ifndef GL_INVALID_INDEX
+#	define GL_INVALID_INDEX -1
+#endif /* GL_INVALID_INDEX */
 
 namespace c4g {
 
@@ -58,8 +73,6 @@ public:
 
 	GLint attributeLocation(const char* const name);
 	GLint uniformLocation(const char* const name);
-	GLint uniformLocationARB(const char* const name);
-	GLint uniformBlockIndex(const char* const name);
 	void uniform(int loc, float f0);
 	void uniform(int loc, float f0, float f1);
 	void uniform(int loc, float f0, float f1, float f2);

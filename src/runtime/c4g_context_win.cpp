@@ -7,9 +7,10 @@
 */
 
 #include "c4g_context_win.hpp"
-#include <Windows.h>
 
-#ifdef C4G_RUNTIME_CP_VC
+#ifdef C4G_RUNTIME_OS_WIN
+
+#include <Windows.h>
 
 namespace c4g {
 
@@ -112,4 +113,4 @@ void popContext(Context* ctx) {
 
 }
 
-#endif /* C4G_RUNTIME_CP_VC */
+#endif /* C4G_RUNTIME_OS_WIN */

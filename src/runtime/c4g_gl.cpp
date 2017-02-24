@@ -6,6 +6,8 @@
 ** Copyright (C) 2017 Wang Renxin. All rights reserved.
 */
 
+#include "c4g_context_ios.h"
+#include "c4g_context_macos.h"
 #include "c4g_context_win.hpp"
 #include "c4g_gl.hpp"
 
@@ -22,7 +24,9 @@ OpenGL::~OpenGL() {
 bool OpenGL::open(void) {
 	_context = createContext();
 
+#ifdef C4G_RUNTIME_OS_WIN
 	glewInit();
+#endif /* C4G_RUNTIME_OS_WIN */
 
 	int major, minor;
 	c4g::gl::OpenGL::getVersion(&major, &minor);
@@ -62,7 +66,7 @@ bool OpenGL::end(void) {
 void OpenGL::showDriverInfo(void) const {
 	char device[256];
 	c4g::gl::OpenGL::getDevice(device, sizeof(device));
-	printf(device);
+	printf("%s", device);
 	int major, minor;
 	c4g::gl::OpenGL::getVersion(&major, &minor);
 	printf("OpenGL Version: %d.%d.\n", major, minor);
@@ -134,7 +138,9 @@ void OpenGL::getVersion(int* major, int* minor) {
 }
 
 void OpenGL::setupGLParameters(void) {
+#if !defined C4G_RUNTIME_OS_IOS && !defined C4G_RUNTIME_OS_IOS_SIM
 	glEnable(GL_TEXTURE_1D);
+#endif
 	glEnable(GL_TEXTURE_2D);
 	glEnable(GL_TEXTURE_3D);
 }

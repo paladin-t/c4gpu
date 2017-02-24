@@ -29,7 +29,7 @@ bool Shader::readFile(const char* const file) {
 		return false;
 
 	fseek(fp, 0, SEEK_END);
-	l = ftell(fp) + 1;
+	l = (int)(ftell(fp) + 1);
 
 	// Reads code.
 	_code = (GLchar*)malloc(sizeof(GLchar) * l);
@@ -57,7 +57,11 @@ bool Shader::readString(const char* const str) {
 	if (!str)
 		return false;
 
+#ifdef C4G_RUNTIME_OS_WIN
 	_code = _strdup(str);
+#else /* C4G_RUNTIME_OS_WIN */
+	_code = strdup(str);
+#endif /* C4G_RUNTIME_OS_WIN */
 
 	return true;
 }
@@ -172,14 +176,6 @@ GLint Program::attributeLocation(const char* const name) {
 
 GLint Program::uniformLocation(const char* const name) {
 	return glGetUniformLocation(_prog, name);
-}
-
-GLint Program::uniformLocationARB(const char* const name) {
-	return glGetUniformLocationARB(_prog, name);
-}
-
-GLint Program::uniformBlockIndex(const char* const name) {
-	return glGetUniformBlockIndex(_prog, name);
 }
 
 void Program::uniform(int loc, float f0) {

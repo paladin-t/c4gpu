@@ -362,7 +362,7 @@ C4G_RUNTIME_API void c4grt_prepare_out(struct C4GRT_Runtime* rt, C4GRT_PassId pa
  * @brief Computes, the output data buffer will be filled.
  *
  * @param[in] rt - A C4GPU runtime instance.
- * @param[in] pass - The first pass ID to compute from, uses the first added pass if it's zero.
+ * @param[in] head - The first pass ID to compute from, uses the first added pass if it's zero.
  * @param[in] mapimm - Whether maps output buffer immediately.
  */
 C4G_RUNTIME_API void c4grt_compute(struct C4GRT_Runtime* rt, C4GRT_PassId head /* = 0 */, C4GRT_Bool mapimm /* = false */);

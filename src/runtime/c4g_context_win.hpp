@@ -11,7 +11,7 @@
 
 #include "c4g_runtime.h"
 
-#ifdef C4G_RUNTIME_CP_VC
+#ifdef C4G_RUNTIME_OS_WIN
 
 namespace c4g {
 
@@ -30,6 +30,6 @@ C4G_RUNTIME_IMPL void popContext(Context* ctx);
 
 }
 
-#endif /* C4G_RUNTIME_CP_VC */
+#endif /* C4G_RUNTIME_OS_WIN */
 
 #endif /* __C4G_CONTEXT_WIN_H__ */
