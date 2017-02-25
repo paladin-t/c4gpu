@@ -7,6 +7,7 @@ REM
 REM This is a MY-BASIC powered script.
 
 import "@c4g"
+import "@file"
 
 ' Config.
 write_to_file = false ' Change this to true to enable logging to file.
@@ -61,11 +62,11 @@ rt.finish()
 ' Write to file?
 if write_to_file then
     print "Write to file...";
-    fp = file.file()
-    file.open(fp, "c4grt_eval.log", "w")
-    file.write_line(fp, "Output 0:")
-    file.write(fp, out0)
-    file.close(fp)
+    fp = file()
+    fp.open("c4grt_eval.log", "w")
+    fp.write_line("Output 0:")
+    fp.write(out0)
+    fp.close()
 endif
 print "Done.";
 

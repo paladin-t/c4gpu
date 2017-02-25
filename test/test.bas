@@ -7,9 +7,10 @@ REM
 REM This is a MY-BASIC powered script.
 
 import "@c4g"
+import "@file"
 
 ' Config.
-write_to_file = false ' Change this to true to enable logging to file.
+write_to_file = true ' Change this to true to enable logging to file.
 
 ' Texture data.
 print "Prepare texture data...";
@@ -96,14 +97,14 @@ rt.finish()
 ' Write to file?
 if write_to_file then
     print "Write to file...";
-    fp = file.file()
-    file.open(fp, "c4grt_eval.log", "w")
-    file.write_line(fp, "Output 0:")
-    file.write(fp, out2)
-    file.write_line(fp)
-    file.write_line(fp, "Output 1:")
-    file.write(fp, out3)
-    file.close(fp)
+    fp = file()
+    fp.open("c4grt_eval.log", "w")
+    fp.write_line("Output 0:")
+    fp.write(out2)
+    fp.write_line()
+    fp.write_line("Output 1:")
+    fp.write(out3)
+    fp.close()
 endif
 print "Done.";
 
