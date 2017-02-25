@@ -17,31 +17,14 @@ namespace gl {
 
 struct Context {
 	EAGLContext* _context = nullptr;
+	EAGLContext* _oldContext = nullptr;
 };
 
 Context* createContext(void) {
 	Context* result = new Context();
 
 	result->_context = [[EAGLContext alloc] initWithAPI: kEAGLRenderingAPIOpenGLES3];
-	/*PIXELFORMATDESCRIPTOR pfd;
-	int iFormat;
-
-	createWindow(&result->hWnd);
-	result->hDC = GetDC(result->hWnd);
-
-	ZeroMemory(&pfd, sizeof(pfd));
-	pfd.nSize = sizeof(pfd);
-	pfd.nVersion = 1;
-	pfd.dwFlags = PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER;
-	pfd.iPixelType = PFD_TYPE_RGBA;
-	pfd.cColorBits = 24;
-	pfd.cDepthBits = 16;
-	pfd.iLayerType = PFD_MAIN_PLANE;
-	iFormat = ChoosePixelFormat(result->hDC, &pfd);
-	SetPixelFormat(result->hDC, iFormat, &pfd);
-
-	result->hRC = wglCreateContext(result->hDC);
-	pushContext(result);*/
+	pushContext(result);
 
 	return result;
 }
@@ -53,8 +36,7 @@ void finishCreatingContext(Context* ctx) {
 void destroyContext(Context* ctx) {
 	if (!ctx) return;
 
-	/*wglDeleteContext(ctx->hRC);
-	ReleaseDC(ctx->hWnd, ctx->hDC);*/
+	ctx->_context = nullptr;
 
 	delete ctx;
 }
@@ -62,21 +44,19 @@ void destroyContext(Context* ctx) {
 void pushContext(Context* ctx) {
 	if (!ctx) return;
 
-	/*ctx->hOldDC = wglGetCurrentDC();
-	ctx->hOldRC = wglGetCurrentContext();
-	wglMakeCurrent(ctx->hDC, ctx->hRC);*/
+	ctx->_oldContext = [EAGLContext currentContext];
+	[EAGLContext setCurrentContext: ctx->_context];
 }
 
 void popContext(Context* ctx) {
 	if (!ctx) return;
 
-	/*wglMakeCurrent(ctx->hOldDC, ctx->hOldRC);
-	ctx->hOldDC = nullptr;
-	ctx->hOldRC = nullptr;*/
+	[EAGLContext setCurrentContext: ctx->_oldContext];
+	ctx->_oldContext = nullptr;
 }
-		
+
 }
-	
+
 }
 
 #endif /* defined C4G_RUNTIME_OS_IOS || defined C4G_RUNTIME_OS_IOS */

@@ -52,11 +52,11 @@ extern "C" {
 #elif defined __APPLE__
 #	include <TargetConditionals.h>
 #	define C4G_RUNTIME_OS_APPLE
-#	ifdef TARGET_OS_IPHONE
+#	if defined TARGET_OS_IPHONE && TARGET_OS_IPHONE == 1
 #		define C4G_RUNTIME_OS_IOS
-#	elif defined TARGET_IPHONE_SIMULATOR
+#	elif defined TARGET_IPHONE_SIMULATOR && TARGET_IPHONE_SIMULATOR == 1
 #		define C4G_RUNTIME_OS_IOS_SIM
-#	elif defined TARGET_OS_MAC
+#	elif defined TARGET_OS_MAC && TARGET_OS_MAC == 1
 #		define C4G_RUNTIME_OS_MAC
 #	endif
 #elif defined __unix__

@@ -7,6 +7,7 @@
  */
 
 #include "c4g_context_macos.h"
+#include <GLKit/GLKit.h>
 
 #ifdef C4G_RUNTIME_OS_MAC
 
@@ -15,31 +16,26 @@ namespace c4g {
 namespace gl {
 
 struct Context {
-	int foo;
+	CGLContextObj _context = nullptr;
+	CGLContextObj _oldContext = nullptr;
 };
 
 Context* createContext(void) {
 	Context* result = new Context();
 
-	/*PIXELFORMATDESCRIPTOR pfd;
-	int iFormat;
-
-	createWindow(&result->hWnd);
-	result->hDC = GetDC(result->hWnd);
-
-	ZeroMemory(&pfd, sizeof(pfd));
-	pfd.nSize = sizeof(pfd);
-	pfd.nVersion = 1;
-	pfd.dwFlags = PFD_DRAW_TO_WINDOW | PFD_SUPPORT_OPENGL | PFD_DOUBLEBUFFER;
-	pfd.iPixelType = PFD_TYPE_RGBA;
-	pfd.cColorBits = 24;
-	pfd.cDepthBits = 16;
-	pfd.iLayerType = PFD_MAIN_PLANE;
-	iFormat = ChoosePixelFormat(result->hDC, &pfd);
-	SetPixelFormat(result->hDC, iFormat, &pfd);
-
-	result->hRC = wglCreateContext(result->hDC);
-	pushContext(result);*/
+	CGLPixelFormatAttribute pixelFormatAttributes[] = {
+		kCGLPFAOpenGLProfile, (CGLPixelFormatAttribute)kCGLOGLPVersion_3_2_Core,
+		kCGLPFAColorSize, (CGLPixelFormatAttribute)24,
+		kCGLPFAAlphaSize, (CGLPixelFormatAttribute)8,
+		kCGLPFAAccelerated,
+		(CGLPixelFormatAttribute)0
+	};
+	CGLPixelFormatObj pixelFormat;
+	GLint numberOfPixels;
+	CGLChoosePixelFormat(pixelFormatAttributes, &pixelFormat, &numberOfPixels);
+	CGLCreateContext(pixelFormat, 0, &result->_context);
+	CGLDestroyPixelFormat(pixelFormat);
+	pushContext(result);
 
 	return result;
 }
@@ -51,8 +47,7 @@ void finishCreatingContext(Context* ctx) {
 void destroyContext(Context* ctx) {
 	if (!ctx) return;
 
-	/*wglDeleteContext(ctx->hRC);
-	ReleaseDC(ctx->hWnd, ctx->hDC);*/
+	CGLDestroyContext(ctx->_context);
 
 	delete ctx;
 }
@@ -60,21 +55,19 @@ void destroyContext(Context* ctx) {
 void pushContext(Context* ctx) {
 	if (!ctx) return;
 
-	/*ctx->hOldDC = wglGetCurrentDC();
-	ctx->hOldRC = wglGetCurrentContext();
-	wglMakeCurrent(ctx->hDC, ctx->hRC);*/
+	ctx->_oldContext = CGLGetCurrentContext();
+	CGLSetCurrentContext(ctx->_context);
 }
-		
+
 void popContext(Context* ctx) {
 	if (!ctx) return;
-			
-	/*wglMakeCurrent(ctx->hOldDC, ctx->hOldRC);
-	ctx->hOldDC = nullptr;
-	ctx->hOldRC = nullptr;*/
+
+	CGLSetCurrentContext(ctx->_oldContext);
+	ctx->_oldContext = nullptr;
 }
-		
+
 }
-	
+
 }
 
 #endif /* C4G_RUNTIME_OS_MAC */
