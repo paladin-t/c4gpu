@@ -8,11 +8,18 @@
 ** The native C eval test.
 */
 
-#include <conio.h>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <Windows.h>
+#include <string.h>
+#include <time.h>
+#ifdef _MSC_VER
+#	include <conio.h>
+#	include <Windows.h>
+#endif /* _MSC_VER */
+#ifdef __clang__
+#	include <sys/time.h>
+#endif /* __clang__ */
 
 typedef struct Vector2 {
 	float x, y;
@@ -149,7 +156,7 @@ int main(int argc, char* argv[]) {
 	free(in0);
 	free(out0);
 
-	_getch();
+	getchar();
 
 	return 0;
 }

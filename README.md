@@ -14,7 +14,7 @@
 
 Welcome to the C4GPU Runtime. The C4GPU Runtime accelerated computing library is a free, general purpose, open source library that simplifies the process of developing software that targets parallel and massively parallel computing benefits by hardware acceleration with GPU. Let's call it C4GRT for short. It implements a GPGPU method with [Transform Feedback](https://www.khronos.org/opengl/wiki/Transform_Feedback) and programming with [GLSL](https://en.wikipedia.org/wiki/GLSL). With this library, you don't need to care about how to manipulate GPU API. The only thing you need to do is use the C API, and write standard GLSL shader for evaluation.
 
-### 2. Why GLSL for GPGPU
+### 2. Why use GLSL for GPGPU
 
 There are some other GPGPU techniques available. But GLSL is almost the sole option if you'd like to write legal cross platform GPU program, although it's designed as a graphics shadering language.
 
@@ -22,7 +22,7 @@ C4GRT is an abstraction layer of GPGPU with OpenGL.
 
 ## Compatibility
 
-This repository only contains libraries and test programs for Windows for the moment. It requires VC++ 2015 runtime to run the programs, please use [`redist/vc_redist.x64.exe`](redist/vc_redist.x64.exe) to install it.
+This repository only contains libraries and test programs for Windows for the moment. It requires VC++ 2015 x64 runtime to run C++ based programs, please use [`redist/vc_redist.x64.exe`](redist/vc_redist.x64.exe) to install it.
 
 TODO : ADD BIN FOR MORE OS
 
@@ -124,6 +124,12 @@ p1 = rt.add_pass(p0) ' Adds the second pass, and uses p0 as its previous.
 rt.set_pass_pipe(p0, true, "o0", "v0", "o1", "v1") ' Sets how to pass output data from p0 to p1 as input.
 ~~~~~~~~~~
 
+In the above code, the first parameter of `set_pass_pipe` specifies the ahead pass, and the second boolean parameter indicates whether the output data would flow to its following pass. The rest variadic arguments list in a form of key-value pairs tells the naming rules of data flow. Here `p0`'s output `o0` links to `p1`'s input `v0`, `p0`'s `o1` links to `p1`'s `v1`.
+
+Without invoking `set_pass_pipe`, the linked passes work as a sequence one by one, but without output to input data flow.
+
+It's also possible to partially set some of the data by piping, and the rest by common prepared input buffers.
+
 ## Limitations
 
 It requires OpenGL 2.0 or OpenGL ES 3.0 to use the Transform Feedback. Some GPUs didn't implement texture sampler in vertex shader.
@@ -146,7 +152,7 @@ C4GRT 是针对 GPGPU 的 OpenGL 调用的一层抽象。
 
 ## 兼容性
 
-本源码仓库暂时只提供针对 Windows 平台的库文件和测试程序。程序运行需要 VC++ 2015 运行时支持，请使用 [`redist/vc_redist.x64.exe`](redist/vc_redist.x64.exe) 进行安装。
+本源码仓库暂时只提供针对 Windows 平台的库文件和测试程序。基于 C++ 的程序运行需要 VC++ 2015 x64 运行时支持，请使用 [`redist/vc_redist.x64.exe`](redist/vc_redist.x64.exe) 进行安装。
 
 TODO : ADD BIN FOR MORE OS
 
@@ -247,6 +253,12 @@ p0 = rt.add_pass() ' 添加第一个 pass。
 p1 = rt.add_pass(p0) ' 添加第二个 pass，且使用 p0 作为其前置 pass。
 rt.set_pass_pipe(p0, true, "o0", "v0", "o1", "v1") ' 设置如何将 p0 输出传递给 p1 作为输入。
 ~~~~~~~~~~
+
+在上述代码中，`set_pass_pipe` 的第一个参数指定首 pass，第二个 boolean 参数指定其输出数据会流向其后继 pass。其余以“键值对”存在的变长参数列表为数据流向定义命名规则。在这里 `p0` 的输出 `o0` 连接到 `p1` 的输入 `v0`，`p0` 的 `o1` 连接到 `p1` 的 `v1`。
+
+如果没有调用 `set_pass_pipe`，则已连接到 pass 只是一个接一个的被计算，并不会有输出到输入的数据流向。
+
+程序中同样支持部分指定数据流向管道，其余数据使用常规输入缓存。
 
 ## 限制
 
