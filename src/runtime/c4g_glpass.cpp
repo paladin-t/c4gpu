@@ -210,7 +210,7 @@ bool Pass::prepareTex(const C4GRT_Tex* const pd, size_t ds) {
 			glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 			glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 #endif
-				
+
 			break;
 		case 2:
 			b.map(*pcd);
@@ -342,7 +342,10 @@ bool Pass::prepareIn(BufferList &bd, const PipeNameDict &pipes) {
 			(GLsizei)b.sizePerElement(), 0
 		);
 	}
-	_pipedCount = (GLsizei)bd.front().count();
+	if (!bd.empty())
+		_pipedCount = (GLsizei)bd.front().count();
+	else
+		_pipedCount = 0;
 
 	return true;
 }

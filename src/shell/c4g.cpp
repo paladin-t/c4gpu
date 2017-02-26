@@ -122,9 +122,8 @@ int main(int argc, char* argv[]) {
 
 	struct C4GRT_Runtime* rt = r.open();
 
-	r.showDriverInfo(rt);
-
 	r.begin(rt);
+	r.showDriverInfo(rt);
 	{
 		const C4GRT_Vec4b ptx0[] = { { 64, 64, 64, 64 }, { 64, 64, 64, 64 }, { 64, 64, 64, 64 }, { 64, 64, 64, 64 } };
 		const C4GRT_Tex ptx[] = {

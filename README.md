@@ -66,7 +66,7 @@ C4GRT | [prog.bas](test/prog.bas)/[prog.vert](test/prog.vert) | 230ms
 C | - | 2.5min
 C# | [prog.cs](test/prog.cs) | 4.8min
 
-Without doubt the performance of the GPGPU solution stands out remarkably.
+The result may be different according to specific hardwares. But without doubt the performance of the GPGPU solution stands out remarkably.
 
 ## Principles
 
@@ -196,7 +196,7 @@ C4GRT | [prog.bas](test/prog.bas)/[prog.vert](test/prog.vert) | 230ms
 C | - | 2.5min
 C# | [prog.cs](test/prog.cs) | 4.8min
 
-毫无疑问 GPGPU 解决方案的效率明显胜出。
+不同硬件可能导致结果不同。但毫无疑问 GPGPU 解决方案的效率明显胜出。
 
 ## 原理
 

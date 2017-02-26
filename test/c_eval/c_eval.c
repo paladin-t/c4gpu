@@ -126,7 +126,7 @@ int main(int argc, char* argv[]) {
 	Vector4 un0;
 	Vector4* in0 = NULL;
 	Vector4* out0 = NULL;
-	int i = 0;
+	size_t i = 0;
 	unsigned t = 0;
 
 	printf("Native C Eval\n");

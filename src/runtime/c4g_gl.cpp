@@ -65,6 +65,7 @@ bool OpenGL::end(void) {
 
 void OpenGL::showDriverInfo(void) const {
 	char device[256];
+	memset(device, 0, sizeof(device));
 	c4g::gl::OpenGL::getDevice(device, sizeof(device));
 	printf("%s", device);
 	int major, minor;
