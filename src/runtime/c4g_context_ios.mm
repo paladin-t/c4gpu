@@ -55,6 +55,12 @@ void popContext(Context* ctx) {
 	ctx->_oldContext = nullptr;
 }
 
+bool isContext(Context* ctx) {
+	if (!ctx) return false;
+
+	return ctx->_context == [EAGLContext currentContext];
+}
+
 }
 
 }

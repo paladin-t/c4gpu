@@ -109,6 +109,12 @@ void popContext(Context* ctx) {
 	ctx->hOldRC = nullptr;
 }
 
+bool isContext(Context* ctx) {
+	if (!ctx) return false;
+
+	return ctx->hDC == wglGetCurrentDC() && ctx->hRC == wglGetCurrentContext();
+}
+
 }
 
 }

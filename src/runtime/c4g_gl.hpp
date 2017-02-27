@@ -28,6 +28,8 @@ public:
 
 	bool begin(void);
 	bool end(void);
+	bool isCurrent(void) const;
+	bool checkIsCurrent(void) const;
 
 	void showDriverInfo(void) const;
 

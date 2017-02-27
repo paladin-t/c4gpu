@@ -233,6 +233,16 @@ typedef struct C4GRT_Tex {
 struct C4GRT_Runtime;
 
 /**
+ * @brief C4GPU return states.
+ */
+typedef enum C4GRT_States {
+	ST_OK,
+	ST_INVALID_ARGUMENT,
+	ST_CONTEXT_ACTIVED,
+	ST_CONTEXT_NOT_ACTIVED
+} C4GRT_States;
+
+/**
  * @brief Opens a C4GPU runtime.
  *
  * @return - A C4GPU runtime instance.
@@ -244,25 +254,29 @@ C4G_RUNTIME_API struct C4GRT_Runtime* c4grt_open(void);
  * @param[in] rt - A C4GPU runtime instance.
  */
 C4G_RUNTIME_API void c4grt_close(struct C4GRT_Runtime* rt);
-/**
- * @brief Shows informations about the driver.
- *
- * @param[in] rt - A C4GPU runtime instance.
- */
-C4G_RUNTIME_API void c4grt_show_driver_info(struct C4GRT_Runtime* rt);
 
 /**
- * @brief Begins a C4GPU runtime processing.
+ * @brief Actives a C4GPU runtime context, to begin processing.
  *
  * @param[in] rt - A C4GPU runtime instance.
+ * @return - Execution state.
  */
-C4G_RUNTIME_API void c4grt_begin(struct C4GRT_Runtime* rt);
+C4G_RUNTIME_API C4GRT_States c4grt_begin(struct C4GRT_Runtime* rt);
 /**
- * @brief Ends a C4GPU runtime processing.
+ * @brief Deactives a C4GPU runtime context, to end processing.
  *
  * @param[in] rt - A C4GPU runtime instance.
+ * @return - Execution state.
  */
-C4G_RUNTIME_API void c4grt_end(struct C4GRT_Runtime* rt);
+C4G_RUNTIME_API C4GRT_States c4grt_end(struct C4GRT_Runtime* rt);
+
+/**
+ * @brief Shows informations about the driver of a runtime context.
+ *
+ * @param[in] rt - A C4GPU runtime instance.
+ * @return - Execution state.
+ */
+C4G_RUNTIME_API C4GRT_States c4grt_show_driver_info(struct C4GRT_Runtime* rt);
 
 /**
  * @brief Adds a computation pass.
@@ -278,8 +292,9 @@ C4G_RUNTIME_API C4GRT_PassId c4grt_add_pass(struct C4GRT_Runtime* rt, C4GRT_Pass
  * @param[in] rt - A C4GPU runtime instance.
  * @param[in] pass - A pass ID.
  * @param[in] next - A following pass ID.
+ * @return - Execution state.
  */
-C4G_RUNTIME_API void c4grt_set_pass_flow(struct C4GRT_Runtime* rt, C4GRT_PassId pass, C4GRT_PassId next);
+C4G_RUNTIME_API C4GRT_States c4grt_set_pass_flow(struct C4GRT_Runtime* rt, C4GRT_PassId pass, C4GRT_PassId next);
 /**
  * @brief Sets whether to enable a data pipeline from a pass to the following.
  *
@@ -288,8 +303,9 @@ C4G_RUNTIME_API void c4grt_set_pass_flow(struct C4GRT_Runtime* rt, C4GRT_PassId 
  * @param[in] pipe - Whether the pipe will be enabled.
  * @param[in] pars - A string array of the output name/input name key-values for pipline flow.
  * @param[in] ps - Count of the elements in the array `pars`.
+ * @return - Execution state.
  */
-C4G_RUNTIME_API void c4grt_set_pass_pipe(struct C4GRT_Runtime* rt, C4GRT_PassId pass, C4GRT_Bool pipe, const char* const * const pars, size_t ps);
+C4G_RUNTIME_API C4GRT_States c4grt_set_pass_pipe(struct C4GRT_Runtime* rt, C4GRT_PassId pass, C4GRT_Bool pipe, const char* const * const pars, size_t ps);
 
 /**
  * @brief Uses a GPU program file for computation.
@@ -299,8 +315,9 @@ C4G_RUNTIME_API void c4grt_set_pass_pipe(struct C4GRT_Runtime* rt, C4GRT_PassId 
  * @param[in] f - A GPU program file path.
  * @param[in] varyings - Varying names.
  * @param[in] vs - Count of varying names.
+ * @return - Execution state.
  */
-C4G_RUNTIME_API void c4grt_use_gpu_program_file(struct C4GRT_Runtime* rt, C4GRT_PassId pass, const char* const f, const char* const varyings[], size_t vs);
+C4G_RUNTIME_API C4GRT_States c4grt_use_gpu_program_file(struct C4GRT_Runtime* rt, C4GRT_PassId pass, const char* const f, const char* const varyings[], size_t vs);
 /**
  * @brief Uses a GPU program text for computation.
  *
@@ -309,8 +326,9 @@ C4G_RUNTIME_API void c4grt_use_gpu_program_file(struct C4GRT_Runtime* rt, C4GRT_
  * @param[in] c - A GPU program text.
  * @param[in] varyings - Varying names.
  * @param[in] vs - Count of varying names.
+ * @return - Execution state.
  */
-C4G_RUNTIME_API void c4grt_use_gpu_program_string(struct C4GRT_Runtime* rt, C4GRT_PassId pass, const char* const c, const char* const varyings[], size_t vs);
+C4G_RUNTIME_API C4GRT_States c4grt_use_gpu_program_string(struct C4GRT_Runtime* rt, C4GRT_PassId pass, const char* const c, const char* const varyings[], size_t vs);
 
 /**
  * @brief Prepares a computation, and generates GPU buffers.
@@ -320,8 +338,9 @@ C4G_RUNTIME_API void c4grt_use_gpu_program_string(struct C4GRT_Runtime* rt, C4GR
  * @param[in] ts - Texture data buffer count.
  * @param[in] is - Input data buffer count.
  * @param[in] os - Output data buffer count.
+ * @return - Execution state.
  */
-C4G_RUNTIME_API void c4grt_prepare_buffers(struct C4GRT_Runtime* rt, C4GRT_PassId pass, size_t ts, size_t is, size_t os);
+C4G_RUNTIME_API C4GRT_States c4grt_prepare_buffers(struct C4GRT_Runtime* rt, C4GRT_PassId pass, size_t ts, size_t is, size_t os);
 /**
  * @brief Prepares and fills texture data buffer for computation.
  *
@@ -329,8 +348,9 @@ C4G_RUNTIME_API void c4grt_prepare_buffers(struct C4GRT_Runtime* rt, C4GRT_PassI
  * @param[in] pass - A pass ID.
  * @param[in] pd - Texture data buffer list.
  * @param[in] ds - Texture data buffer count.
+ * @return - Execution state.
  */
-C4G_RUNTIME_API void c4grt_prepare_tex(struct C4GRT_Runtime* rt, C4GRT_PassId pass, const C4GRT_Tex* const pd, size_t ds);
+C4G_RUNTIME_API C4GRT_States c4grt_prepare_tex(struct C4GRT_Runtime* rt, C4GRT_PassId pass, const C4GRT_Tex* const pd, size_t ds);
 /**
  * @brief Prepares uniform data for computation.
  *
@@ -338,8 +358,9 @@ C4G_RUNTIME_API void c4grt_prepare_tex(struct C4GRT_Runtime* rt, C4GRT_PassId pa
  * @param[in] pass - A pass ID.
  * @param[in] pd - Uniform data list.
  * @param[in] ds - Uniform data count.
+ * @return - Execution state.
  */
-C4G_RUNTIME_API void c4grt_prepare_uniform(struct C4GRT_Runtime* rt, C4GRT_PassId pass, const C4GRT_Data* const pd, size_t ds);
+C4G_RUNTIME_API C4GRT_States c4grt_prepare_uniform(struct C4GRT_Runtime* rt, C4GRT_PassId pass, const C4GRT_Data* const pd, size_t ds);
 /**
  * @brief Prepares and fills input data buffer for computation.
  *
@@ -347,8 +368,9 @@ C4G_RUNTIME_API void c4grt_prepare_uniform(struct C4GRT_Runtime* rt, C4GRT_PassI
  * @param[in] pass - A pass ID.
  * @param[in] pd - Input data buffer list.
  * @param[in] ds - Input data buffer count.
+ * @return - Execution state.
  */
-C4G_RUNTIME_API void c4grt_prepare_in(struct C4GRT_Runtime* rt, C4GRT_PassId pass, const C4GRT_Data* const pd, size_t ds);
+C4G_RUNTIME_API C4GRT_States c4grt_prepare_in(struct C4GRT_Runtime* rt, C4GRT_PassId pass, const C4GRT_Data* const pd, size_t ds);
 /**
  * @brief Prepares output data buffer for computation.
  *
@@ -356,30 +378,34 @@ C4G_RUNTIME_API void c4grt_prepare_in(struct C4GRT_Runtime* rt, C4GRT_PassId pas
  * @param[in] pass - A pass ID.
  * @param[in] pd - Output data buffer list.
  * @param[in] ds - Output data buffer count.
+ * @return - Execution state.
  */
-C4G_RUNTIME_API void c4grt_prepare_out(struct C4GRT_Runtime* rt, C4GRT_PassId pass, const C4GRT_Data* const pd, size_t ds);
+C4G_RUNTIME_API C4GRT_States c4grt_prepare_out(struct C4GRT_Runtime* rt, C4GRT_PassId pass, const C4GRT_Data* const pd, size_t ds);
 /**
  * @brief Computes, the output data buffer will be filled.
  *
  * @param[in] rt - A C4GPU runtime instance.
  * @param[in] head - The first pass ID to compute from, uses the first added pass if it's zero.
  * @param[in] mapimm - Whether maps output buffer immediately.
+ * @return - Execution state.
  */
-C4G_RUNTIME_API void c4grt_compute(struct C4GRT_Runtime* rt, C4GRT_PassId head /* = 0 */, C4GRT_Bool mapimm /* = false */);
+C4G_RUNTIME_API C4GRT_States c4grt_compute(struct C4GRT_Runtime* rt, C4GRT_PassId head /* = 0 */, C4GRT_Bool mapimm /* = false */);
 /**
  * @brief Maps and fills output buffer data.
  *
  * @param[in] rt - A C4GPU runtime instance.
  * @param[in] pass - The pass ID to be mapped.
+ * @return - Execution state.
  */
-C4G_RUNTIME_API void c4grt_map_out(struct C4GRT_Runtime* rt, C4GRT_PassId pass);
+C4G_RUNTIME_API C4GRT_States c4grt_map_out(struct C4GRT_Runtime* rt, C4GRT_PassId pass);
 /**
  * @brief Finishes computation, and deletes GPU buffers associated with some specified pass(es).
  *
  * @param[in] rt - A C4GPU runtime instance.
  * @param[in] pass - A pass ID to finish, finishes all passes if it's zero.
+ * @return - Execution state.
  */
-C4G_RUNTIME_API void c4grt_finish(struct C4GRT_Runtime* rt, C4GRT_PassId pass /* = 0 */);
+C4G_RUNTIME_API C4GRT_States c4grt_finish(struct C4GRT_Runtime* rt, C4GRT_PassId pass /* = 0 */);
 
 /**
  * @brief Gets the count of a data structure.

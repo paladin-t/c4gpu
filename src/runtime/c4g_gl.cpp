@@ -63,6 +63,20 @@ bool OpenGL::end(void) {
 	return true;
 }
 
+bool OpenGL::isCurrent(void) const {
+	return isContext(_context);
+}
+
+bool OpenGL::checkIsCurrent(void) const {
+	if (!isCurrent()) {
+		fprintf(stderr, "The context is not actived.\n");
+
+		return false;
+	}
+
+	return true;
+}
+
 void OpenGL::showDriverInfo(void) const {
 	char device[256];
 	memset(device, 0, sizeof(device));

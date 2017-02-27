@@ -25,6 +25,7 @@ C4G_RUNTIME_IMPL void destroyContext(Context* ctx);
 
 C4G_RUNTIME_IMPL void pushContext(Context* ctx);
 C4G_RUNTIME_IMPL void popContext(Context* ctx);
+C4G_RUNTIME_IMPL bool isContext(Context* ctx);
 
 }
 
