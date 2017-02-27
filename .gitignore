@@ -4,4 +4,5 @@
 /src/.vs/c4g/v14/.suo
 /temp
 /test/c4grt_eval.log
+.DS_Store
 *.user
