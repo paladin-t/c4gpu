@@ -1,6 +1,6 @@
 # The C4GPU Runtime
 
-**Copyright (C) 2017 [Wang Renxin](https://linkedin.com/in/wangrenxin). All rights reserved.**
+**Copyright (C) 2017 [Wang Renxin](https://github.com/paladin-t). All rights reserved.**
 
 [Email](mailto:hellotony521@qq.com)
 
@@ -22,7 +22,7 @@ C4GRT is an abstraction layer of GPGPU with OpenGL.
 
 ## Compatibility
 
-This repository only contains libraries and test programs for Windows for the moment. It requires VC++ 2015 x64 runtime to run C++ based programs, please use [`redist/vc_redist.x64.exe`](redist/vc_redist.x64.exe) to install it.
+This repository only contains libraries and test programs for Windows for the moment. It requires VC++ 2015 x64 runtime to run C++ based programs, please use [`redist/vc_redist.x64.exe`](https://c4gpu.github.io/c4gpu_runtime/redist/vc_redist.x64.exe) to install it.
 
 TODO : ADD BIN FOR MORE OS
 
@@ -152,7 +152,7 @@ C4GRT 是针对 GPGPU 的 OpenGL 调用的一层抽象。
 
 ## 兼容性
 
-本源码仓库暂时只提供针对 Windows 平台的库文件和测试程序。基于 C++ 的程序运行需要 VC++ 2015 x64 运行时支持，请使用 [`redist/vc_redist.x64.exe`](redist/vc_redist.x64.exe) 进行安装。
+本源码仓库暂时只提供针对 Windows 平台的库文件和测试程序。基于 C++ 的程序运行需要 VC++ 2015 x64 运行时支持，请使用 [`redist/vc_redist.x64.exe`](https://c4gpu.github.io/c4gpu_runtime/redist/vc_redist.x64.exe) 进行安装。
 
 TODO : ADD BIN FOR MORE OS
 
