@@ -22,6 +22,7 @@ struct Runtime final {
 	decltype(&c4grt_open) open = nullptr;
 	decltype(&c4grt_close) close = nullptr;
 
+	decltype(&c4grt_set_error_handler) setErrorHandler = nullptr;
 	decltype(&c4grt_show_driver_info) showDriverInfo = nullptr;
 
 	decltype(&c4grt_begin) begin = nullptr;
@@ -59,6 +60,7 @@ struct Runtime final {
 
 		open = (decltype(open))GetProcAddress(_hDll, "c4grt_open");
 		close = (decltype(close))GetProcAddress(_hDll, "c4grt_close");
+		setErrorHandler = (decltype(setErrorHandler))GetProcAddress(_hDll, "c4grt_set_error_handler");
 		showDriverInfo = (decltype(showDriverInfo))GetProcAddress(_hDll, "c4grt_show_driver_info");
 		begin = (decltype(begin))GetProcAddress(_hDll, "c4grt_begin");
 		end = (decltype(end))GetProcAddress(_hDll, "c4grt_end");
@@ -79,6 +81,7 @@ struct Runtime final {
 		bool ret = (
 			!!open ||
 			!!close ||
+			!!setErrorHandler ||
 			!!showDriverInfo ||
 			!!begin ||
 			!!end ||
@@ -114,6 +117,10 @@ struct Runtime final {
 	}
 };
 
+static void onError(struct C4GRT_Runtime* rt, C4GRT_PassId pass, const char* const msg) {
+	printf("%s\n", msg);
+}
+
 int main(int argc, char* argv[]) {
 	printf("C4G\n");
 
@@ -123,6 +130,7 @@ int main(int argc, char* argv[]) {
 	struct C4GRT_Runtime* rt = r.open();
 
 	r.begin(rt);
+	r.setErrorHandler(rt, onError);
 	r.showDriverInfo(rt);
 	{
 		const C4GRT_Vec4b ptx0[] = { { 64, 64, 64, 64 }, { 64, 64, 64, 64 }, { 64, 64, 64, 64 }, { 64, 64, 64, 64 } };

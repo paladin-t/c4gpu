@@ -64,6 +64,7 @@ outa1.push(out3)
 ' Prepares.
 print "Prepare context...";
 rt = runtime()
+rt.set_error_handler(lambda (_pass, _msg) ( print _msg; ))
 rt.show_driver_info()
 p0 = rt.add_pass()
 p1 = rt.add_pass(p0)

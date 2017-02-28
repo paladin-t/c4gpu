@@ -19,6 +19,8 @@ Shader::Shader(ShaderTypes type) : _type(type) {
 }
 
 Shader::~Shader() {
+	if (_code)
+		free(_code);
 }
 
 bool Shader::readFile(const char* const file) {
@@ -66,7 +68,7 @@ bool Shader::readString(const char* const str) {
 	return true;
 }
 
-bool Shader::compile(void) {
+bool Shader::compile(const SimpleErrorHandler &&callback) {
 	if (!_code) return false;
 
 	GLint status = 0;
@@ -91,8 +93,12 @@ bool Shader::compile(void) {
 
 	if (status != GL_TRUE) {
 		char errorLog[1024];
-		glGetShaderInfoLog(_object, sizeof(errorLog), nullptr, errorLog);
-		printf("%s\n", errorLog);
+		GLsizei len = 0;
+		glGetShaderInfoLog(_object, sizeof(errorLog), &len, errorLog);
+		if (callback != nullptr)
+			callback(errorLog);
+		else
+			printf("%s\n", errorLog);
 
 		return false;
 	}

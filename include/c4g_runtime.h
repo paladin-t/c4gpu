@@ -239,8 +239,14 @@ typedef enum C4GRT_States {
 	ST_OK,
 	ST_INVALID_ARGUMENT,
 	ST_CONTEXT_ACTIVED,
-	ST_CONTEXT_NOT_ACTIVED
+	ST_CONTEXT_NOT_ACTIVED,
+	ST_ERROR_OCCURED
 } C4GRT_States;
+
+/**
+ * @brief C4GPU runtime error handler.
+ */
+typedef void (* C4GRT_ErrorHandler)(struct C4GRT_Runtime*, C4GRT_PassId, const char* const);
 
 /**
  * @brief Opens a C4GPU runtime.
@@ -270,6 +276,14 @@ C4G_RUNTIME_API C4GRT_States c4grt_begin(struct C4GRT_Runtime* rt);
  */
 C4G_RUNTIME_API C4GRT_States c4grt_end(struct C4GRT_Runtime* rt);
 
+/**
+ * @brief Sets an error handler of a runtime context.
+ *
+ * @param[in] rt - A C4GPU runtime instance.
+ * @param[in] callback - Error handler.
+ * @return - Execution state.
+ */
+C4G_RUNTIME_API C4GRT_States c4grt_set_error_handler(struct C4GRT_Runtime* rt, C4GRT_ErrorHandler callback);
 /**
  * @brief Shows informations about the driver of a runtime context.
  *

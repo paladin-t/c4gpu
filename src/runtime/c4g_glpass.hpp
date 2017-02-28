@@ -41,15 +41,18 @@ public:
 	bool setPipe(bool p, const char* const * const pars, size_t ps);
 
 	bool use(Program &&prog);
-	bool prepareBuffers(size_t ts, size_t is, size_t os);
-	bool prepareTex(const C4GRT_Tex* const pd, size_t ds);
-	bool prepareUniform(const C4GRT_Data* const pd, size_t ds);
-	bool prepareIn(const C4GRT_Data* const pd, size_t ds);
-	bool prepareIn(BufferList &bd, const PipeNameDict &pipes);
-	bool prepareOut(const C4GRT_Data* const pd, size_t ds);
-	bool compute(bool mapImm);
-	bool mapOut(void);
-	bool finish(void);
+	bool prepareBuffers(size_t ts, size_t is, size_t os, const SimpleErrorHandler &&callback);
+	bool prepareTex(const C4GRT_Tex* const pd, size_t ds, const SimpleErrorHandler &&callback);
+	bool prepareUniform(const C4GRT_Data* const pd, size_t ds, const SimpleErrorHandler &&callback);
+	bool prepareIn(const C4GRT_Data* const pd, size_t ds, const SimpleErrorHandler &&callback);
+	bool prepareIn(BufferList &bd, const PipeNameDict &pipes, const SimpleErrorHandler &&callback);
+	bool prepareOut(const C4GRT_Data* const pd, size_t ds, const SimpleErrorHandler &&callback);
+	bool compute(bool mapImm, const SimpleErrorHandler &&callback);
+	bool mapOut(const SimpleErrorHandler &&callback);
+	bool finish(const SimpleErrorHandler &&callback);
+
+private:
+	bool tryCheckError(const SimpleErrorHandler &&callback);
 
 private:
 	OpenGL* _owner = nullptr;

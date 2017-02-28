@@ -12,6 +12,8 @@ namespace c4g {
 
 namespace gl {
 
+#define C4GRT_CHECK_ERROR do { if (tryCheckError(std::move(callback))) return false; } while (false)
+
 C4G_RUNTIME_IMPL static GLenum type(C4GRT_DataTypes t) {
 	switch (t) {
 	case DT_REAL:
@@ -70,7 +72,7 @@ Pass::Pass(OpenGL* owner, C4GRT_PassId id) : _owner(owner), _id(id) {
 }
 
 Pass::~Pass() {
-	finish();
+	finish(nullptr);
 }
 
 const C4GRT_PassId &Pass::id(void) const {
@@ -134,17 +136,16 @@ bool Pass::use(Program &&prog) {
 	return true;
 }
 
-bool Pass::prepareBuffers(size_t ts, size_t is, size_t os) {
+bool Pass::prepareBuffers(size_t ts, size_t is, size_t os, const SimpleErrorHandler &&callback) {
 	// Tidies.
-	finish();
+	finish(std::move(callback));
 
 	// Texture buffers.
 	for (size_t i = 0; i < ts; ++i) {
 		_tex.push();
 		Buffer &b = _tex.back();
 		glActiveTexture((GLenum)(GL_TEXTURE0 + i + 1 + _texSlotBegin));
-		GLenum err = glGetError();
-		if (err != GL_NO_ERROR) return false;
+		C4GRT_CHECK_ERROR;
 		glGenTextures(1, &b.id());
 	}
 	Pass* next = nextPass();
@@ -158,6 +159,7 @@ bool Pass::prepareBuffers(size_t ts, size_t is, size_t os) {
 		_in.push();
 		Buffer &b = _in.back();
 		glGenBuffers(1, &b.id());
+		C4GRT_CHECK_ERROR;
 	}
 
 	// Output data buffers.
@@ -165,12 +167,13 @@ bool Pass::prepareBuffers(size_t ts, size_t is, size_t os) {
 		_out.push();
 		Buffer &b = _out.back();
 		glGenBuffers(1, &b.id());
+		C4GRT_CHECK_ERROR;
 	}
 
 	return true;
 }
 
-bool Pass::prepareTex(const C4GRT_Tex* const pd, size_t ds) {
+bool Pass::prepareTex(const C4GRT_Tex* const pd, size_t ds, const SimpleErrorHandler &&callback) {
 	_computeProg.use();
 	size_t i = 0;
 	GLint j = 0;
@@ -207,6 +210,7 @@ bool Pass::prepareTex(const C4GRT_Tex* const pd, size_t ds) {
 			b.map(*pcd);
 			glBindTexture(GL_TEXTURE_1D, b.id());
 			glTexImage1D(GL_TEXTURE_1D, 0, fc, (GLsizei)d._sizes[0], 0, fmt, type, b.ptr());
+			C4GRT_CHECK_ERROR;
 			glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 			glTexParameteri(GL_TEXTURE_1D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 #endif
@@ -216,6 +220,7 @@ bool Pass::prepareTex(const C4GRT_Tex* const pd, size_t ds) {
 			b.map(*pcd);
 			glBindTexture(GL_TEXTURE_2D, b.id());
 			glTexImage2D(GL_TEXTURE_2D, 0, fc, (GLsizei)d._sizes[0], (GLsizei)d._sizes[1], 0, fmt, type, b.ptr());
+			C4GRT_CHECK_ERROR;
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
@@ -224,6 +229,7 @@ bool Pass::prepareTex(const C4GRT_Tex* const pd, size_t ds) {
 			b.map(*pcd);
 			glBindTexture(GL_TEXTURE_3D, b.id());
 			glTexImage3D(GL_TEXTURE_3D, 0, fc, (GLsizei)d._sizes[0], (GLsizei)d._sizes[1], (GLsizei)d._sizes[2], 0, fmt, type, b.ptr());
+			C4GRT_CHECK_ERROR;
 			glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 			glTexParameteri(GL_TEXTURE_3D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 
@@ -243,7 +249,7 @@ bool Pass::prepareTex(const C4GRT_Tex* const pd, size_t ds) {
 	return true;
 }
 
-bool Pass::prepareUniform(const C4GRT_Data* const pd, size_t ds) {
+bool Pass::prepareUniform(const C4GRT_Data* const pd, size_t ds, const SimpleErrorHandler &&callback) {
 	if (!pd) return false;
 	_computeProg.use();
 	for (size_t i = 0; i < ds; ++i) {
@@ -285,7 +291,7 @@ bool Pass::prepareUniform(const C4GRT_Data* const pd, size_t ds) {
 	return true;
 }
 
-bool Pass::prepareIn(const C4GRT_Data* const pd, size_t ds) {
+bool Pass::prepareIn(const C4GRT_Data* const pd, size_t ds, const SimpleErrorHandler &&callback) {
 	glBindVertexArray(_vao);
 
 	_computeProg.use();
@@ -299,6 +305,7 @@ bool Pass::prepareIn(const C4GRT_Data* const pd, size_t ds) {
 
 		glBindBuffer(GL_ARRAY_BUFFER, b.id());
 		glBufferData(GL_ARRAY_BUFFER, b.size(), b.ptr(), GL_STREAM_DRAW);
+		C4GRT_CHECK_ERROR;
 
 		GLint k = j;
 		if (b.name()) {
@@ -312,13 +319,14 @@ bool Pass::prepareIn(const C4GRT_Data* const pd, size_t ds) {
 			type(b.type()), GL_FALSE,
 			(GLsizei)b.sizePerElement(), 0
 		);
+		C4GRT_CHECK_ERROR;
 	}
 	_pipedCount = 0;
 
 	return true;
 }
 
-bool Pass::prepareIn(BufferList &bd, const PipeNameDict &pipes) {
+bool Pass::prepareIn(BufferList &bd, const PipeNameDict &pipes, const SimpleErrorHandler &&callback) {
 	glBindVertexArray(_vao);
 
 	_computeProg.use();
@@ -334,6 +342,7 @@ bool Pass::prepareIn(BufferList &bd, const PipeNameDict &pipes) {
 			continue;
 
 		glBindBuffer(GL_ARRAY_BUFFER, b.id());
+		C4GRT_CHECK_ERROR;
 
 		glEnableVertexAttribArray(k);
 		glVertexAttribPointer(
@@ -341,6 +350,7 @@ bool Pass::prepareIn(BufferList &bd, const PipeNameDict &pipes) {
 			type(b.type()), GL_FALSE,
 			(GLsizei)b.sizePerElement(), 0
 		);
+		C4GRT_CHECK_ERROR;
 	}
 	if (!bd.empty())
 		_pipedCount = (GLsizei)bd.front().count();
@@ -350,7 +360,7 @@ bool Pass::prepareIn(BufferList &bd, const PipeNameDict &pipes) {
 	return true;
 }
 
-bool Pass::prepareOut(const C4GRT_Data* const pd, size_t ds) {
+bool Pass::prepareOut(const C4GRT_Data* const pd, size_t ds, const SimpleErrorHandler &&callback) {
 	size_t i = 0;
 	auto it = _out.begin();
 	for (; i < ds && it != _out.end(); ++i, ++it) {
@@ -360,13 +370,14 @@ bool Pass::prepareOut(const C4GRT_Data* const pd, size_t ds) {
 
 		glBindBuffer(GL_ARRAY_BUFFER, b.id());
 		glBufferData(GL_ARRAY_BUFFER, b.size(), nullptr, GL_STREAM_DRAW);
+		C4GRT_CHECK_ERROR;
 		glBindBuffer(GL_ARRAY_BUFFER, 0);
 	}
 
 	return true;
 }
 
-bool Pass::compute(bool mapImm) {
+bool Pass::compute(bool mapImm, const SimpleErrorHandler &&callback) {
 	_mapped = false;
 
 	_computeProg.use();
@@ -378,39 +389,45 @@ bool Pass::compute(bool mapImm) {
 		for (auto it = _out.begin(); it != _out.end(); ++i, ++it) {
 			Buffer &b = *it;
 			glBindBufferBase(GL_TRANSFORM_FEEDBACK_BUFFER, i, b.id());
+			C4GRT_CHECK_ERROR;
 		}
 
 		glBeginTransformFeedback(GL_POINTS);
+		C4GRT_CHECK_ERROR;
 		{
 			if (_in.empty())
 				glDrawArrays(GL_POINTS, 0, _pipedCount);
 			else
 				glDrawArrays(GL_POINTS, 0, (GLsizei)_in.front().count());
+			C4GRT_CHECK_ERROR;
 		}
 		glEndTransformFeedback();
+		C4GRT_CHECK_ERROR;
 	}
 	glDisable(GL_RASTERIZER_DISCARD);
 	glFinish();
 
 	if (mapImm) {
-		mapOut();
+		mapOut(std::move(callback));
 	}
 	if (_pipe) {
 		Pass* following = nextPass();
 		if (following)
-			following->prepareIn(_out, _pipeNames);
+			following->prepareIn(_out, _pipeNames, std::move(callback));
 	}
 
 	return true;
 }
 
-bool Pass::mapOut(void) {
+bool Pass::mapOut(const SimpleErrorHandler &&callback) {
 	if (_mapped) return true;
 
 	for (auto it = _out.begin(); it != _out.end(); ++it) {
 		Buffer &b = *it;
 		glBindBuffer(GL_ARRAY_BUFFER, b.id());
+		C4GRT_CHECK_ERROR;
 		GLchar* mem = (GLchar*)glMapBufferRange(GL_ARRAY_BUFFER, 0, b.size(), GL_MAP_READ_BIT);
+		C4GRT_CHECK_ERROR;
 		memcpy(b.ptr(), mem, b.size());
 		glUnmapBuffer(GL_ARRAY_BUFFER);
 	}
@@ -420,7 +437,7 @@ bool Pass::mapOut(void) {
 	return true;
 }
 
-bool Pass::finish(void) {
+bool Pass::finish(const SimpleErrorHandler &&callback) {
 	// Output buffers.
 	if (!_out.empty()) {
 		glBindVertexArray(0);
@@ -451,6 +468,19 @@ bool Pass::finish(void) {
 				glDeleteTextures(1, &b.id());
 		}
 		_tex.clear();
+	}
+
+	return true;
+}
+
+bool Pass::tryCheckError(const SimpleErrorHandler &&callback) {
+	GLenum err = glGetError();
+	if (err == GL_NO_ERROR) return false;
+
+	if (callback != nullptr) {
+		const char* str = (const char*)gluErrorString(err);
+		if (!callback(str))
+			printf("%s\n", str);
 	}
 
 	return true;

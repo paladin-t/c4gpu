@@ -20,6 +20,7 @@
 #		include <OpenGL/gl3.h>
 #	endif
 #endif /* C4G_RUNTIME_OS_WIN */
+#include <functional>
 #include <vector>
 
 #ifndef GL_INVALID_INDEX
@@ -31,6 +32,10 @@ namespace c4g {
 namespace gl {
 
 typedef std::vector<GLuint> GLuintArray;
+
+typedef std::function<void (struct C4GRT_Runtime*, C4GRT_PassId, const char* const)> ErrorHandler;
+
+typedef std::function<bool (const char* const)> SimpleErrorHandler;
 
 enum ShaderTypes {
 	ST_NONE,
@@ -47,7 +52,7 @@ public:
 
 	bool readFile(const char* const file);
 	bool readString(const char* const str);
-	bool compile(void);
+	bool compile(const SimpleErrorHandler &&callback);
 
 	GLuint object(void);
 

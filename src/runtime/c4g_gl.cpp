@@ -19,9 +19,12 @@ OpenGL::OpenGL() {
 }
 
 OpenGL::~OpenGL() {
+	clearPasses();
 }
 
-bool OpenGL::open(void) {
+bool OpenGL::open(struct C4GRT_Runtime* rt) {
+	_runtime = rt;
+
 	_context = createContext();
 
 #ifdef C4G_RUNTIME_OS_WIN
@@ -31,7 +34,8 @@ bool OpenGL::open(void) {
 	int major, minor;
 	c4g::gl::OpenGL::getVersion(&major, &minor);
 	if (major < 2) {
-		printf("Support for OpenGL 2.0 is required.\n");
+		const char* const msg = "Support for OpenGL 2.0 is required.";
+		printf("%s\n", msg);
 
 		finishCreatingContext(_context);
 
@@ -67,14 +71,8 @@ bool OpenGL::isCurrent(void) const {
 	return isContext(_context);
 }
 
-bool OpenGL::checkIsCurrent(void) const {
-	if (!isCurrent()) {
-		fprintf(stderr, "The context is not actived.\n");
-
-		return false;
-	}
-
-	return true;
+struct C4GRT_Runtime* OpenGL::getRuntime(void) const {
+	return _runtime;
 }
 
 void OpenGL::showDriverInfo(void) const {
@@ -85,6 +83,14 @@ void OpenGL::showDriverInfo(void) const {
 	int major, minor;
 	c4g::gl::OpenGL::getVersion(&major, &minor);
 	printf("OpenGL Version: %d.%d.\n", major, minor);
+}
+
+const ErrorHandler &OpenGL::getErrorHandler(void) const {
+	return _errorHandler;
+}
+
+void OpenGL::setErrorHandler(const ErrorHandler &callback) {
+	_errorHandler = callback;
 }
 
 C4GRT_PassId OpenGL::addPass(C4GRT_PassId prev) {
@@ -112,24 +118,32 @@ Pass* OpenGL::getPass(C4GRT_PassId id) {
 	return it->second;
 }
 
-bool OpenGL::compute(C4GRT_PassId head, bool mapImm) {
+void OpenGL::clearPasses(void) {
+	for (auto it : _passes)
+		delete it.second;
+	_passes.clear();
+}
+
+bool OpenGL::compute(C4GRT_PassId head, bool mapImm, const ErrorHandler &&callback) {
 	if (_passes.empty()) return false;
 
 	C4GRT_PassId id = head ? head : _headPass;
 	while (id) {
 		Pass* p = getPass(id);
 		if (!p) break;
-		if (!p->compute(mapImm)) return false;
+		auto handler = [=] (const char* const msg) { if (callback != nullptr) { callback(_runtime, id, msg); return true; } return false; };
+		if (!p->compute(mapImm, std::move(handler)))
+			return false;
 		id = p->next();
 	}
 
 	return true;
 }
 
-size_t OpenGL::finishAll(void) {
+size_t OpenGL::finishAll(const SimpleErrorHandler &&callback) {
 	size_t result = 0;
 	for (auto it : _passes) {
-		if (it.second->finish())
+		if (it.second->finish(std::move(callback)))
 			++result;
 	}
 

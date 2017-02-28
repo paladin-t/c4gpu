@@ -23,22 +23,25 @@ public:
 	OpenGL();
 	~OpenGL();
 
-	bool open(void);
+	bool open(struct C4GRT_Runtime* rt);
 	bool close(void);
 
 	bool begin(void);
 	bool end(void);
 	bool isCurrent(void) const;
-	bool checkIsCurrent(void) const;
 
+	struct C4GRT_Runtime* getRuntime(void) const;
 	void showDriverInfo(void) const;
+	const ErrorHandler &getErrorHandler(void) const;
+	void setErrorHandler(const ErrorHandler &callback);
 
 	C4GRT_PassId addPass(C4GRT_PassId prev);
 	Pass* getPass(C4GRT_PassId id);
+	void clearPasses(void);
 
-	bool compute(C4GRT_PassId head, bool mapImm = false);
+	bool compute(C4GRT_PassId head, bool mapImm = false, const ErrorHandler &&callback = nullptr);
 
-	size_t finishAll(void);
+	size_t finishAll(const SimpleErrorHandler &&callback = nullptr);
 
 	static void getDevice(char* device, size_t ds);
 	static void getVersion(int* major, int* minor);
@@ -47,10 +50,12 @@ private:
 	void setupGLParameters(void);
 
 private:
+	struct C4GRT_Runtime* _runtime = nullptr;
 	Context* _context = nullptr;
 	C4GRT_PassId _headPass = 0;
 	C4GRT_PassId _passIdSeed = 1;
 	PassDict _passes;
+	ErrorHandler _errorHandler;
 
 };
 

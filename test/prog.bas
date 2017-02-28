@@ -38,6 +38,7 @@ outa0.push(out0)
 ' Prepares.
 print "Prepare context...";
 rt = runtime()
+rt.set_error_handler(lambda (_pass, _msg) ( print _msg; ))
 rt.show_driver_info()
 p0 = rt.add_pass()
 rt.use_gpu_program_file(p0, "prog.vert", "o0")
