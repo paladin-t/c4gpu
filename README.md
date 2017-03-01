@@ -102,6 +102,7 @@ A common workflow works as follow.
 
 ~~~~~~~~~~bas
 rt = runtime() ' Creates a C4GRT instance.
+rt.begin_proc() ' Begins processing, actives current context.
 p0 = rt.add_pass() ' Adds an evaluation pass.
 rt.use_gpu_program_file(p0, "prog.vert", "o0") ' Uses a GPU program, with Transform Feedback varyings.
 
@@ -114,6 +115,7 @@ rt.compute(p0) ' Does evaluation.
 
 rt.map_out(p0) ' Maps output data.
 rt.finish() ' Finishes.
+rt.end_proc() ' Ends processing.
 ~~~~~~~~~~
 
 It's also possible to link several evaluation passes into an evaluation sequence, in which a pass will use some of the output data of previous pass as its input. Use the follow code to link two passes.
@@ -232,6 +234,7 @@ C4GRT 使用 C++11 实现，并且其接口为 ANSI C 导出。如需查看实�
 
 ~~~~~~~~~~bas
 rt = runtime() ' 创建一个 C4GRT 实例。
+rt.begin_proc() ' 开始处理，激活当前上下文。
 p0 = rt.add_pass() ' 添加一个计算 pass。
 rt.use_gpu_program_file(p0, "prog.vert", "o0") ' 使用某个 GPU 程序，附带 Transform Feedback 传出命名。
 
@@ -244,6 +247,7 @@ rt.compute(p0) ' 进行计算。
 
 rt.map_out(p0) ' 映射输出数据。
 rt.finish() ' 完成。
+rt.end_proc() ' 完成处理。
 ~~~~~~~~~~
 
 同时系统允许把多个计算 pass 连接成一个计算序列，其中某一 pass 会使用其前一 pass 的某些输出数据作为输入。使用如下代码来连接两个 pass。
