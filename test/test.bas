@@ -10,7 +10,7 @@ import "@c4g"
 import "@file"
 
 ' Config.
-write_to_file = true ' Change this to true to enable logging to file.
+write_to_file = false ' Change this to true to enable logging to file.
 
 ' Texture data.
 print "Prepare texture data...";
@@ -64,6 +64,7 @@ outa1.push(out3)
 ' Prepares.
 print "Prepare context...";
 rt = runtime()
+rt.begin_proc()
 rt.set_error_handler(lambda (_pass, _msg) ( print _msg; ))
 rt.show_driver_info()
 p0 = rt.add_pass()
@@ -94,6 +95,7 @@ print "Finish...";
 rt.map_out(p0)
 rt.map_out(p1)
 rt.finish()
+rt.end_proc()
 
 ' Write to file?
 if write_to_file then

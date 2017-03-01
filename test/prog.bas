@@ -38,6 +38,7 @@ outa0.push(out0)
 ' Prepares.
 print "Prepare context...";
 rt = runtime()
+rt.begin_proc()
 rt.set_error_handler(lambda (_pass, _msg) ( print _msg; ))
 rt.show_driver_info()
 p0 = rt.add_pass()
@@ -59,6 +60,7 @@ print t, "ms cost.";
 print "Finish...";
 rt.map_out(p0)
 rt.finish()
+rt.end_proc()
 
 ' Write to file?
 if write_to_file then
