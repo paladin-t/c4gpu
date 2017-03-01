@@ -14,7 +14,7 @@
 #	include <GL/glew.h>
 #	include <GL/glut.h>
 #elif defined C4G_RUNTIME_OS_APPLE
-#	if (defined C4G_RUNTIME_OS_IOS || defined C4G_RUNTIME_OS_IOS_SIM)
+#	if defined C4G_RUNTIME_OS_IOS || defined C4G_RUNTIME_OS_IOS_SIM
 #		include <OpenGLES/ES3/gl.h>
 #	else
 #		include <OpenGL/gl3.h>

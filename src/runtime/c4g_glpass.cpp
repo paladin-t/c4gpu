@@ -68,6 +68,20 @@ C4G_RUNTIME_IMPL static GLsizei size(C4GRT_DataTypes t) {
 	}
 }
 
+C4G_RUNTIME_IMPL static const char* const getErrorString(GLenum errCode) {
+	switch (errCode) {
+	case GL_INVALID_ENUM: return "Invalid enum.";
+	case GL_INVALID_VALUE: return "Invalid value.";
+	case GL_INVALID_OPERATION: return "Invalid operation.";
+#if !defined C4G_RUNTIME_OS_APPLE
+	case GL_STACK_OVERFLOW: return "Stack overflow.";
+	case GL_STACK_UNDERFLOW: return "Stack underflow.";
+#endif
+	case GL_OUT_OF_MEMORY: return "Out of memory.";
+	default: return "No error.";
+	}
+}
+
 Pass::Pass(OpenGL* owner, C4GRT_PassId id) : _owner(owner), _id(id) {
 }
 
@@ -478,7 +492,7 @@ bool Pass::tryCheckError(const SimpleErrorHandler &&callback) {
 	if (err == GL_NO_ERROR) return false;
 
 	if (callback != nullptr) {
-		const char* str = (const char*)gluErrorString(err);
+		const char* str = getErrorString(err);
 		if (!callback(str))
 			printf("%s\n", str);
 	}
