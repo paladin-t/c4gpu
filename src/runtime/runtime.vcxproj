@@ -205,8 +205,7 @@ copy /y "glew\bin\Release\x64\glew32.dll" "$(OutDir)*.dll"</Command>
 copy /y "glew\bin\Release\Win32\glew32.dll" "$(OutDir)*.dll"
 copy /y "freeglut\bin\freeglut.dll" "$(SolutionDir)..\lib\x86\*.*"
 copy /y "glew\bin\Release\Win32\glew32.dll" "$(SolutionDir)..\lib\x86\*.*"
-copy /y "$(OutDir)$(TargetName).dll" "$(SolutionDir)..\lib\x86\*.*"
-..\..\tools\upx\upx.exe -9 "$(SolutionDir)..\lib\x86\$(TargetName).dll"</Command>
+copy /y "$(OutDir)$(TargetName).dll" "$(SolutionDir)..\lib\x86\*.*"</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>copy /y "$(ProjectDir)c4g_runtime.h" "$(SolutionDir)..\include\*.*"</Command>
@@ -237,8 +236,7 @@ copy /y "$(OutDir)$(TargetName).dll" "$(SolutionDir)..\lib\x86\*.*"
 copy /y "glew\bin\Release\x64\glew32.dll" "$(OutDir)*.dll"
 copy /y "freeglut\bin\x64\freeglut.dll" "$(SolutionDir)..\lib\x64\*.*"
 copy /y "glew\bin\Release\x64\glew32.dll" "$(SolutionDir)..\lib\x64\*.*"
-copy /y "$(OutDir)$(TargetName).dll" "$(SolutionDir)..\lib\x64\*.*"
-..\..\tools\upx\upx.exe -9 "$(SolutionDir)..\lib\x64\$(TargetName).dll"</Command>
+copy /y "$(OutDir)$(TargetName).dll" "$(SolutionDir)..\lib\x64\*.*"</Command>
     </PostBuildEvent>
     <PreBuildEvent>
       <Command>copy /y "$(ProjectDir)c4g_runtime.h" "$(SolutionDir)..\include\*.*"</Command>

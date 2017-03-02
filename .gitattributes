@@ -1,3 +1,2 @@
 src/runtime/freeglut/* linguist-vendored
 src/runtime/glew/* linguist-vendored
-tools/upx/* linguist-vendored
