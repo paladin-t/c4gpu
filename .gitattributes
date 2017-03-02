@@ -1,2 +1,6 @@
+src/runtime/freeglut/include/GL/* linguist-vendored
 src/runtime/freeglut/* linguist-vendored
+src/runtime/glew/include/GL/* linguist-vendored
 src/runtime/glew/* linguist-vendored
+lib/ios/c4grt_ios.framework/Headers/* linguist-vendored
+lib/macos/c4grt_macos.framework/Versions/A/Headers/* linguist-vendored
