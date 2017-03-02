@@ -8,16 +8,22 @@
 
 #include "c4g_runtime.h"
 #include <stdio.h>
-#include <Windows.h>
+#ifdef C4G_RUNTIME_OS_WIN
+#	include <Windows.h>
+#endif /* C4G_RUNTIME_OS_WIN */
 
-#define RUNTIME_LIB_NAME L"c4grt.dll"
+#ifdef C4G_RUNTIME_OS_WIN
+#	define RUNTIME_LIB_NAME L"c4grt.dll"
+#endif /* C4G_RUNTIME_OS_WIN */
 
 #ifndef C4G_COUNTOF
 #	define C4G_COUNTOF(__a) (sizeof(__a) / sizeof(*(__a)))
 #endif /* !C4G_COUNTOF */
 
 struct Runtime final {
+#ifdef C4G_RUNTIME_OS_WIN
 	HINSTANCE _hDll = nullptr;
+#endif /* C4G_RUNTIME_OS_WIN */
 
 	decltype(&c4grt_open) open = nullptr;
 	decltype(&c4grt_close) close = nullptr;
@@ -44,12 +50,8 @@ struct Runtime final {
 	decltype(&c4grt_map_out) mapOut = nullptr;
 	decltype(&c4grt_finish) finish = nullptr;
 
-	Runtime::Runtime() {
-	}
-	Runtime::~Runtime() {
-	}
-
 	bool load(void) {
+#ifdef C4G_RUNTIME_OS_WIN
 		_hDll = LoadLibrary(RUNTIME_LIB_NAME);
 
 		if (!_hDll) {
@@ -104,14 +106,37 @@ struct Runtime final {
 
 			return false;
 		}
+#else
+		open = c4grt_open;
+		close = c4grt_close;
+		setErrorHandler = c4grt_set_error_handler;
+		showDriverInfo = c4grt_show_driver_info;
+		begin = c4grt_begin;
+		end = c4grt_end;
+		addPass = c4grt_add_pass;
+		setPassFlow = c4grt_set_pass_flow;
+		setPassPipe = c4grt_set_pass_pipe;
+		useGpuProgramFile = c4grt_use_gpu_program_file;
+		useGpuProgramString = c4grt_use_gpu_program_string;
+		prepareBuffers = c4grt_prepare_buffers;
+		prepareTex = c4grt_prepare_tex;
+		prepareUniform = c4grt_prepare_uniform;
+		prepareIn = c4grt_prepare_in;
+		prepareOut = c4grt_prepare_out;
+		compute = c4grt_compute;
+		mapOut = c4grt_map_out;
+		finish = c4grt_finish;
+#endif
 
 		return true;
 	}
 	bool unload(void) {
+#ifdef C4G_RUNTIME_OS_WIN
 		if (!_hDll)
 			return false;
 
 		FreeLibrary(_hDll);
+#endif
 
 		return true;
 	}

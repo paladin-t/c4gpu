@@ -1,0 +1,6 @@
+framework module c4grt_macos {
+  umbrella header "c4grt_macos.h"
+
+  export *
+  module * { export * }
+}

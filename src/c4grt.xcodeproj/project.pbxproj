@@ -1,0 +1,324 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		035C2B5D1E67DED000E922A5 /* c4g.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035C2B5C1E67DED000E922A5 /* c4g.cpp */; };
+		035C2BA41E67EB4500E922A5 /* c4g_gl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035C2B9A1E67EB4500E922A5 /* c4g_gl.cpp */; };
+		035C2BA51E67EB4500E922A5 /* c4g_glpass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035C2B9C1E67EB4500E922A5 /* c4g_glpass.cpp */; };
+		035C2BA61E67EB4500E922A5 /* c4g_glsl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035C2B9E1E67EB4500E922A5 /* c4g_glsl.cpp */; };
+		035C2BA71E67EB4500E922A5 /* c4g_runtime.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035C2BA01E67EB4500E922A5 /* c4g_runtime.cpp */; };
+		035C2BA81E67EB4500E922A5 /* c4g_utils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 035C2BA21E67EB4500E922A5 /* c4g_utils.cpp */; };
+		035C2BAB1E67EB5000E922A5 /* c4g_context_macos.mm in Sources */ = {isa = PBXBuildFile; fileRef = 035C2BAA1E67EB5000E922A5 /* c4g_context_macos.mm */; };
+		035C2BAE1E67EBD800E922A5 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 035C2BAD1E67EBD800E922A5 /* OpenGL.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		035C2B501E67DAA600E922A5 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 12;
+			dstPath = usr/share/man/man1;
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		035C2B521E67DAA600E922A5 /* c4grt */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = c4grt; sourceTree = BUILT_PRODUCTS_DIR; };
+		035C2B5C1E67DED000E922A5 /* c4g.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = c4g.cpp; path = shell/c4g.cpp; sourceTree = SOURCE_ROOT; };
+		035C2B9A1E67EB4500E922A5 /* c4g_gl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = c4g_gl.cpp; path = runtime/c4g_gl.cpp; sourceTree = "<group>"; };
+		035C2B9B1E67EB4500E922A5 /* c4g_gl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = c4g_gl.hpp; path = runtime/c4g_gl.hpp; sourceTree = "<group>"; };
+		035C2B9C1E67EB4500E922A5 /* c4g_glpass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = c4g_glpass.cpp; path = runtime/c4g_glpass.cpp; sourceTree = "<group>"; };
+		035C2B9D1E67EB4500E922A5 /* c4g_glpass.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = c4g_glpass.hpp; path = runtime/c4g_glpass.hpp; sourceTree = "<group>"; };
+		035C2B9E1E67EB4500E922A5 /* c4g_glsl.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = c4g_glsl.cpp; path = runtime/c4g_glsl.cpp; sourceTree = "<group>"; };
+		035C2B9F1E67EB4500E922A5 /* c4g_glsl.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = c4g_glsl.hpp; path = runtime/c4g_glsl.hpp; sourceTree = "<group>"; };
+		035C2BA01E67EB4500E922A5 /* c4g_runtime.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = c4g_runtime.cpp; path = runtime/c4g_runtime.cpp; sourceTree = "<group>"; };
+		035C2BA11E67EB4500E922A5 /* c4g_runtime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = c4g_runtime.h; path = runtime/c4g_runtime.h; sourceTree = "<group>"; };
+		035C2BA21E67EB4500E922A5 /* c4g_utils.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = c4g_utils.cpp; path = runtime/c4g_utils.cpp; sourceTree = "<group>"; };
+		035C2BA31E67EB4500E922A5 /* c4g_utils.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = c4g_utils.hpp; path = runtime/c4g_utils.hpp; sourceTree = "<group>"; };
+		035C2BA91E67EB5000E922A5 /* c4g_context_macos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = c4g_context_macos.h; path = runtime/c4g_context_macos.h; sourceTree = "<group>"; };
+		035C2BAA1E67EB5000E922A5 /* c4g_context_macos.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = c4g_context_macos.mm; path = runtime/c4g_context_macos.mm; sourceTree = "<group>"; };
+		035C2BAD1E67EBD800E922A5 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = System/Library/Frameworks/OpenGL.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		035C2B4F1E67DAA600E922A5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				035C2BAE1E67EBD800E922A5 /* OpenGL.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		035C2B491E67DAA500E922A5 = {
+			isa = PBXGroup;
+			children = (
+				035C2B991E67EB3300E922A5 /* runtime */,
+				035C2B541E67DAA600E922A5 /* shell */,
+				035C2B531E67DAA600E922A5 /* Products */,
+				035C2BAC1E67EBD800E922A5 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		035C2B531E67DAA600E922A5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				035C2B521E67DAA600E922A5 /* c4grt */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		035C2B541E67DAA600E922A5 /* shell */ = {
+			isa = PBXGroup;
+			children = (
+				035C2B5C1E67DED000E922A5 /* c4g.cpp */,
+			);
+			name = shell;
+			path = c4grt;
+			sourceTree = "<group>";
+		};
+		035C2B991E67EB3300E922A5 /* runtime */ = {
+			isa = PBXGroup;
+			children = (
+				035C2BA91E67EB5000E922A5 /* c4g_context_macos.h */,
+				035C2BAA1E67EB5000E922A5 /* c4g_context_macos.mm */,
+				035C2B9A1E67EB4500E922A5 /* c4g_gl.cpp */,
+				035C2B9B1E67EB4500E922A5 /* c4g_gl.hpp */,
+				035C2B9C1E67EB4500E922A5 /* c4g_glpass.cpp */,
+				035C2B9D1E67EB4500E922A5 /* c4g_glpass.hpp */,
+				035C2B9E1E67EB4500E922A5 /* c4g_glsl.cpp */,
+				035C2B9F1E67EB4500E922A5 /* c4g_glsl.hpp */,
+				035C2BA01E67EB4500E922A5 /* c4g_runtime.cpp */,
+				035C2BA11E67EB4500E922A5 /* c4g_runtime.h */,
+				035C2BA21E67EB4500E922A5 /* c4g_utils.cpp */,
+				035C2BA31E67EB4500E922A5 /* c4g_utils.hpp */,
+			);
+			name = runtime;
+			sourceTree = "<group>";
+		};
+		035C2BAC1E67EBD800E922A5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				035C2BAD1E67EBD800E922A5 /* OpenGL.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		035C2B511E67DAA600E922A5 /* c4grt */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 035C2B591E67DAA600E922A5 /* Build configuration list for PBXNativeTarget "c4grt" */;
+			buildPhases = (
+				035C2B4E1E67DAA600E922A5 /* Sources */,
+				035C2B4F1E67DAA600E922A5 /* Frameworks */,
+				035C2B501E67DAA600E922A5 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = c4grt;
+			productName = c4grt;
+			productReference = 035C2B521E67DAA600E922A5 /* c4grt */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		035C2B4A1E67DAA500E922A5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = wrx;
+				TargetAttributes = {
+					035C2B511E67DAA600E922A5 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = MYG5HMGVM7;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 035C2B4D1E67DAA500E922A5 /* Build configuration list for PBXProject "c4grt" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 035C2B491E67DAA500E922A5;
+			productRefGroup = 035C2B531E67DAA600E922A5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				035C2B511E67DAA600E922A5 /* c4grt */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		035C2B4E1E67DAA600E922A5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				035C2BA81E67EB4500E922A5 /* c4g_utils.cpp in Sources */,
+				035C2BA61E67EB4500E922A5 /* c4g_glsl.cpp in Sources */,
+				035C2B5D1E67DED000E922A5 /* c4g.cpp in Sources */,
+				035C2BAB1E67EB5000E922A5 /* c4g_context_macos.mm in Sources */,
+				035C2BA51E67EB4500E922A5 /* c4g_glpass.cpp in Sources */,
+				035C2BA41E67EB4500E922A5 /* c4g_gl.cpp in Sources */,
+				035C2BA71E67EB4500E922A5 /* c4g_runtime.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		035C2B571E67DAA600E922A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		035C2B581E67DAA600E922A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		035C2B5A1E67DAA600E922A5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = MYG5HMGVM7;
+				FRAMEWORK_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		035C2B5B1E67DAA600E922A5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				DEVELOPMENT_TEAM = MYG5HMGVM7;
+				FRAMEWORK_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		035C2B4D1E67DAA500E922A5 /* Build configuration list for PBXProject "c4grt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				035C2B571E67DAA600E922A5 /* Debug */,
+				035C2B581E67DAA600E922A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		035C2B591E67DAA600E922A5 /* Build configuration list for PBXNativeTarget "c4grt" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				035C2B5A1E67DAA600E922A5 /* Debug */,
+				035C2B5B1E67DAA600E922A5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 035C2B4A1E67DAA500E922A5 /* Project object */;
+}

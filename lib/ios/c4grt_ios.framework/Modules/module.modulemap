@@ -1,0 +1,6 @@
+framework module c4grt_ios {
+  umbrella header "c4grt_ios.h"
+
+  export *
+  module * { export * }
+}

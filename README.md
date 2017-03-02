@@ -22,13 +22,22 @@ C4GRT is an abstraction layer of GPGPU with OpenGL.
 
 ## Compatibility
 
-This repository only contains libraries and test programs for Windows for the moment. It requires VC++ 2015 x64 runtime to run C++ based programs, please use [`redist/vc_redist.x64.exe`](https://c4gpu.github.io/c4gpu_runtime/redist/vc_redist.x64.exe) to install it.
+The repository contains some precompiled libraries as follow.
 
-TODO : ADD BIN FOR MORE OS
+Platform | Path | Usage
+----- | ----- | -----
+Windows | [lib/x64/c4grt.dll](lib/x64/c4grt.dll)/[lib/x86/c4grt.dll](lib/x86/c4grt.dll) | Dynamic libraries
+macOS | [lib/macos/c4grt_macos.framework](lib/macos/c4grt_macos.framework) | Framework
+iOS | [lib/ios/c4grt_ios.framework](lib/ios/c4grt_ios.framework) | Framework
+Linux | TO BE ADDED | -
+Android | TO BE ADDED | -
+Raspberry Pi | TO BE ADDED | -
 
 ## Performance
 
 There are various profiling programs in the [`test`](test) directory.
+
+This repository only contains test programs for Windows for the moment. It requires VC++ 2015 x64 runtime to run C++ based programs, please use [`redist/vc_redist.x64.exe`](https://c4gpu.github.io/c4gpu_runtime/redist/vc_redist.x64.exe) to install it.
 
 ### 1. C4GRT
 
@@ -154,13 +163,22 @@ C4GRT 是针对 GPGPU 的 OpenGL 调用的一层抽象。
 
 ## 兼容性
 
-本源码仓库暂时只提供针对 Windows 平台的库文件和测试程序。基于 C++ 的程序运行需要 VC++ 2015 x64 运行时支持，请使用 [`redist/vc_redist.x64.exe`](https://c4gpu.github.io/c4gpu_runtime/redist/vc_redist.x64.exe) 进行安装。
+本源码仓库包含一些预编译库文件，如下。
 
-TODO : ADD BIN FOR MORE OS
+平台 | 路径 | 使用
+----- | ----- | -----
+Windows | [lib/x64/c4grt.dll](lib/x64/c4grt.dll)/[lib/x86/c4grt.dll](lib/x86/c4grt.dll) | 动态链接库
+macOS | [lib/macos/c4grt_macos.framework](lib/macos/c4grt_macos.framework) | Framework
+iOS | [lib/ios/c4grt_ios.framework](lib/ios/c4grt_ios.framework) | Framework
+Linux | TO BE ADDED | -
+Android | TO BE ADDED | -
+Raspberry Pi | TO BE ADDED | -
 
 ## 性能
 
 在 [`test`](test) 文件夹下有多个性能测试程序。
+
+本源码仓库暂时只提供针对 Windows 平台的测试程序。基于 C++ 的程序运行需要 VC++ 2015 x64 运行时支持，请使用 [`redist/vc_redist.x64.exe`](https://c4gpu.github.io/c4gpu_runtime/redist/vc_redist.x64.exe) 进行安装。
 
 ### 1. C4GRT
 
