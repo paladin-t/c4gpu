@@ -15,6 +15,8 @@
 #	else
 #		include <OpenGL/gl3.h>
 #	endif
+#else
+#	include <GL/gl.h>
 #endif /* C4G_RUNTIME_OS_WIN */
 #include <algorithm>
 

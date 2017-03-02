@@ -9,6 +9,7 @@
 #ifndef __C4G_RUNTIME_H__
 #define __C4G_RUNTIME_H__
 
+#include <stdint.h>
 #include <stdlib.h>
 
 #ifdef __cplusplus
@@ -59,10 +60,10 @@ extern "C" {
 #	elif defined TARGET_OS_MAC && TARGET_OS_MAC == 1
 #		define C4G_RUNTIME_OS_MAC
 #	endif
-#elif defined __unix__
-#	define C4G_RUNTIME_OS_UNIX
 #elif defined __linux__
 #	define C4G_RUNTIME_OS_LINUX
+#elif defined __unix__
+#	define C4G_RUNTIME_OS_UNIX
 #elif defined __ANDROID__
 #	define C4G_RUNTIME_OS_ANDROID
 #else

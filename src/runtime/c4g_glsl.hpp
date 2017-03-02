@@ -19,6 +19,12 @@
 #	else
 #		include <OpenGL/gl3.h>
 #	endif
+#elif defined C4G_RUNTIME_OS_LINUX
+#	include <GL/glew.h>
+#	include <GL/glut.h>
+#	include <GL/gl.h>
+#	include <GL/glu.h>
+#	include <GL/glext.h>
 #endif /* C4G_RUNTIME_OS_WIN */
 #include <functional>
 #include <vector>

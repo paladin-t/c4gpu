@@ -7,6 +7,7 @@
 */
 
 #include "c4g_context_ios.h"
+#include "c4g_context_linux.hpp"
 #include "c4g_context_macos.h"
 #include "c4g_context_win.hpp"
 #include "c4g_gl.hpp"

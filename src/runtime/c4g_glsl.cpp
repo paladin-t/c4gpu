@@ -7,6 +7,7 @@
 */
 
 #include "c4g_glsl.hpp"
+#include <string.h>
 
 namespace c4g {
 

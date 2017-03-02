@@ -17,6 +17,9 @@
     <ClCompile Include="c4g_glpass.cpp">
       <Filter>opengl</Filter>
     </ClCompile>
+    <ClCompile Include="c4g_context_linux.cpp">
+      <Filter>opengl\platform\linux</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="c4g_runtime.h" />
@@ -41,6 +44,9 @@
     <ClInclude Include="c4g_context_ios.h">
       <Filter>opengl\platform\ios</Filter>
     </ClInclude>
+    <ClInclude Include="c4g_context_linux.hpp">
+      <Filter>opengl\platform\linux</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="opengl">
@@ -60,6 +66,9 @@
     </Filter>
     <Filter Include="opengl\platform\ios">
       <UniqueIdentifier>{57084d96-03ef-4542-a4b3-cafac16c5db1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="opengl\platform\linux">
+      <UniqueIdentifier>{89d05d8f-28fb-47d3-929c-b3cda079206c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

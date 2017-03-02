@@ -12,6 +12,7 @@
 #include "c4g_runtime.h"
 #include <list>
 #include <string>
+#include <string.h>
 
 #ifndef C4G_COUNTOF
 #	define C4G_COUNTOF(__a) (sizeof(__a) / sizeof(*(__a)))
