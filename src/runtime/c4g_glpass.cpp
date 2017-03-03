@@ -78,7 +78,7 @@ C4G_RUNTIME_IMPL static const char* const getErrorString(GLenum errCode) {
 	case GL_STACK_UNDERFLOW: return "Stack underflow.";
 #endif
 	case GL_OUT_OF_MEMORY: return "Out of memory.";
-	default: return "No error.";
+	default: return "Unknown error.";
 	}
 }
 

@@ -4,6 +4,9 @@
 
 [Email](mailto:hellotony521@qq.com)
 
+[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+
 <hr />
 
 [简体中文](#简介)
@@ -32,6 +35,8 @@ iOS | [lib/ios/c4grt_ios.framework](lib/ios/c4grt_ios.framework) | Framework
 Linux | TO BE ADDED | -
 Android | TO BE ADDED | -
 Raspberry Pi | TO BE ADDED | -
+
+You have to use a C++11 compatible compiler to make a build manually.
 
 ## Performance
 
@@ -173,6 +178,8 @@ iOS | [lib/ios/c4grt_ios.framework](lib/ios/c4grt_ios.framework) | Framework
 Linux | TO BE ADDED | -
 Android | TO BE ADDED | -
 Raspberry Pi | TO BE ADDED | -
+
+如需手动构建，你需要使用一个兼容 C++11 的编译器。
 
 ## 性能
 

@@ -60,12 +60,12 @@ extern "C" {
 #	elif defined TARGET_OS_MAC && TARGET_OS_MAC == 1
 #		define C4G_RUNTIME_OS_MAC
 #	endif
+#elif defined __ANDROID__
+#	define C4G_RUNTIME_OS_ANDROID
 #elif defined __linux__
 #	define C4G_RUNTIME_OS_LINUX
 #elif defined __unix__
 #	define C4G_RUNTIME_OS_UNIX
-#elif defined __ANDROID__
-#	define C4G_RUNTIME_OS_ANDROID
 #else
 #	define C4G_RUNTIME_OS_UNKNOWN
 #endif /* OS dependent macro */
