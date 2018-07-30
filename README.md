@@ -1,9 +1,5 @@
 # The C4GPU Runtime
 
-**Copyright (C) 2017 [Wang Renxin](https://github.com/paladin-t). All rights reserved.**
-
-[Email](mailto:hellotony521@qq.com)
-
 [![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
